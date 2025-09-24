@@ -57,7 +57,7 @@ const WorkSection = ({ title, projects, showDivider = false }: WorkSectionProps)
               className="w-full text-center"
             >
               <Link
-                to={`/works/${project.id}`}
+                to={`/projects/${project.id}`}
                 className="block cursor-pointer group"
               >
                 <div className="relative overflow-hidden rounded-xl mb-4 pd-2 border-2 border-t-emerald-500">
@@ -75,8 +75,7 @@ const WorkSection = ({ title, projects, showDivider = false }: WorkSectionProps)
                   {project.title}
                 </h4>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  {project.description}
-                  
+                  {project.shortDescription || project.description}
                 </p>
                
               </Link>

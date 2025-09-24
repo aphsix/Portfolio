@@ -13,7 +13,7 @@ const Navbar = () => {
   const location = useLocation()
 
   const navItems = [
-    { name: t('nav.works'), path: '/works' },
+    { name: t('nav.projects'), path: '/projects' },
     { name: t('nav.uses'), path: '/uses' },
   ]
 

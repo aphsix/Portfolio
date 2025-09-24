@@ -17,11 +17,12 @@ const Uses = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-8"
         >
-          <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-3">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
             {t('uses.title')}
           </h1>
-          <p className="text-gray-500 dark:text-gray-400 text-sm max-w-2xl mx-auto">
-            {t('uses.description')}
+          <p className="text-gray-600 dark:text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed">
+            Here's what tech I'm currently using for development, design, and daily productivity.
+            This collection represents tools and hardware that power my creative workflow.
           </p>
         </motion.div>
 
@@ -35,10 +36,12 @@ const Uses = () => {
               transition={{ delay: sectionIndex * 0.1, duration: 0.6 }}
               className="mb-8"
             >
-              <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 flex itesms-center gap-2 mb-4">
-                <span className="text-teal-500">#</span>
-                {section.category}
-              </h2>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-1 h-8 bg-gradient-to-b from-teal-500 to-cyan-500 rounded-full" />
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+                  {section.category}
+                </h2>
+              </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {section.items.map((item, itemIndex) => (
@@ -50,23 +53,45 @@ const Uses = () => {
                       delay: sectionIndex * 0.1 + itemIndex * 0.05,
                       duration: 0.4,
                     }}
-                    className="bg-white dark:bg-gray-800 rounded-lg p-4 hover:shadow-lg dark:hover:bg-gray-750 transition-all duration-200 border border-gray-200 dark:border-gray-700 group"
+                    className="group relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-700"
                   >
-                    {item.image && (
-                      <div className="aspect-video rounded-md overflow-hidden mb-3 bg-gray-100 dark:bg-gray-700 flex items-center justify-center p-2">
-                        <img
-                          src={item.image}
-                          alt={item.name}
-                          className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-200"
-                          onError={(e) => {
-                            e.currentTarget.src = defaultImage;
-                          }}
-                        />
-                      </div>
-                    )}
-                    <h3 className="text-gray-900 dark:text-gray-100 font-medium text-center text-sm">
-                      {item.name}
-                    </h3>
+                    {/* Full Image Background */}
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      {item.image ? (
+                        <>
+                          <img
+                            src={item.image}
+                            alt={item.name}
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                            onError={(e) => {
+                              e.currentTarget.src = defaultImage;
+                            }}
+                          />
+                          {/* Gradient Overlay */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                          {/* Content Overlay */}
+                          <div className="absolute bottom-0 left-0 right-0 p-4">
+                            <h3 className="text-white font-semibold text-lg drop-shadow-lg">
+                              {item.name}
+                            </h3>
+                          </div>
+                        </>
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-teal-500/20 to-cyan-500/20 dark:from-teal-600/30 dark:to-cyan-600/30 flex flex-col items-center justify-center">
+                          <div className="w-16 h-16 bg-teal-500/20 dark:bg-teal-400/30 rounded-full flex items-center justify-center mb-3">
+                            <span className="text-2xl font-bold text-teal-600 dark:text-teal-400">
+                              {item.name.charAt(0)}
+                            </span>
+                          </div>
+                          <h3 className="text-gray-700 dark:text-gray-300 font-semibold text-center px-2">
+                            {item.name}
+                          </h3>
+                        </div>
+                      )}
+
+                      {/* Hover Border Effect */}
+                      <div className="absolute inset-0 border-2 border-transparent group-hover:border-teal-400/50 rounded-xl transition-all duration-300" />
+                    </div>
                   </motion.div>
                 ))}
               </div>
@@ -79,13 +104,24 @@ const Uses = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.6 }}
-          className="mt-12 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm"
+          className="mt-16 relative overflow-hidden"
         >
-          <p className="text-gray-600 dark:text-gray-400 text-sm">
-            💡{" "}
-<strong className="text-gray-900 dark:text-gray-100">{t('uses.note.title')}:</strong>{" "}
-            {t('uses.note.description')}
-          </p>
+          <div className="absolute inset-0 bg-gradient-to-r from-teal-500/10 to-cyan-500/10 dark:from-teal-600/20 dark:to-cyan-600/20 rounded-2xl" />
+          <div className="relative p-8 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl border border-gray-200/50 dark:border-gray-700/50">
+            <div className="flex items-start gap-4">
+              <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-teal-500 to-cyan-500 rounded-xl flex items-center justify-center">
+                <span className="text-2xl">✨</span>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">Always Evolving</h3>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                  This toolkit constantly evolves as I discover new technologies and workflows.
+                  I regularly evaluate new tools to maintain optimal productivity and stay current
+                  with industry best practices.
+                </p>
+              </div>
+            </div>
+          </div>
         </motion.div>
       </div>
     </div>

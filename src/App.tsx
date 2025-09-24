@@ -5,7 +5,7 @@ import ErrorBoundary from './components/ErrorBoundary'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
-import Works from './pages/Works'
+import Projects from './pages/Projects'
 import Posts from './pages/Posts'
 import Uses from './pages/Uses'
 import ProjectDetail from './pages/ProjectDetail'
@@ -21,8 +21,8 @@ function App() {
             <main className="flex-1">
               <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/works" element={<Works />} />
-                <Route path="/works/:projectId" element={<ProjectDetail />} />
+                <Route path="/projects" element={<Projects />} />
+                <Route path="/projects/:projectId" element={<ProjectDetail />} />
                 <Route path="/posts" element={<Posts />} />
                 <Route path="/uses" element={<Uses />} />
               </Routes>

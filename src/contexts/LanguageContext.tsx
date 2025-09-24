@@ -13,7 +13,7 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 const translations = {
   en: {
     // Navigation
-    'nav.works': 'Works',
+    'nav.projects': 'Projects',
     'nav.uses': 'Uses',
     'nav.posts': 'Posts',
     'nav.github': 'GitHub',
@@ -29,15 +29,15 @@ const translations = {
     'home.bio.title': 'About Me',
     'home.featured': 'Featured Projects',
 
-    // Works Page
-    'works.title': 'Works',
-    'works.subtitle': 'A collection of projects I\'ve worked on',
-    'works.main': 'Main Projects',
-    'works.collaborations': 'Collaborations',
-    'works.old': 'Archive',
+    // Projects Page
+    'projects.title': 'Projects',
+    'projects.subtitle': 'A collection of projects I\'ve worked on',
+    'projects.main': 'Main Projects',
+    'projects.collaborations': 'Collaborations',
+    'projects.old': 'Archive',
 
     // Project Detail
-    'project.back': 'Back to Works',
+    'project.back': 'Back to Projects',
     'project.visit': 'Visit Project',
     'project.code': 'View Source',
     'project.coming_soon': 'Coming Soon',
@@ -69,7 +69,7 @@ const translations = {
   },
   th: {
     // Navigation
-    'nav.works': 'ผลงาน',
+    'nav.projects': 'โปรเจค',
     'nav.uses': 'เครื่องมือที่ใช้',
     'nav.posts': 'บทความ',
     'nav.github': 'GitHub',
@@ -85,15 +85,15 @@ const translations = {
     'home.bio.title': 'เกี่ยวกับผม',
     'home.featured': 'ผลงานเด่น',
 
-    // Works Page
-    'works.title': 'ผลงาน',
-    'works.subtitle': 'คอลเลกชันโปรเจคที่ผมได้ทำงานด้วย',
-    'works.main': 'โปรเจคหลัก',
-    'works.collaborations': 'งานร่วมมือ',
-    'works.old': 'คลังเก่า',
+    // Projects Page
+    'projects.title': 'โปรเจค',
+    'projects.subtitle': 'คอลเลกชันโปรเจคที่ผมได้ทำงานด้วย',
+    'projects.main': 'โปรเจคหลัก',
+    'projects.collaborations': 'งานร่วมมือ',
+    'projects.old': 'คลังเก่า',
 
     // Project Detail
-    'project.back': 'กลับไปยังผลงาน',
+    'project.back': 'กลับไปยังโปรเจค',
     'project.visit': 'เยี่ยมชมโปรเจค',
     'project.code': 'ดูซอร์สโค้ด',
     'project.coming_soon': 'เร็วๆ นี้',

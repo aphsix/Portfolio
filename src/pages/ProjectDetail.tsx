@@ -12,7 +12,7 @@ const ProjectDetail = () => {
   const project = projects.find((p) => p.id === projectId);
 
   if (!project) {
-    return <Navigate to="/works" replace />;
+    return <Navigate to="/projects" replace />;
   }
 
   return (
@@ -26,7 +26,7 @@ const ProjectDetail = () => {
           className="mb-6"
         >
           <Link
-            to="/works"
+            to="/projects"
             className="inline-flex items-center gap-2 text-teal-500 hover:text-teal-600 transition-colors text-sm"
           >
             <HiArrowLeft size={16} />
@@ -141,28 +141,9 @@ const ProjectDetail = () => {
             {t('project.about')}
           </h3>
           <div className="prose prose-gray dark:prose-invert max-w-none">
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-base">
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
               {project.descriptionLong || project.description}
             </p>
-            {project.descriptionLong && (
-              <>
-                <h4 className="text-md font-semibold text-gray-900 dark:text-gray-100 mt-6 mb-3">
-                  {t('project.features')}
-                </h4>
-                <ul className="text-gray-700 dark:text-gray-300 leading-relaxed list-disc list-inside space-y-2">
-                  <li>Modern, responsive design with cross-platform compatibility</li>
-                  <li>Advanced user interface with intuitive navigation</li>
-                  <li>Performance optimized for fast loading and smooth interactions</li>
-                  <li>Comprehensive testing and quality assurance</li>
-                </ul>
-                <h4 className="text-md font-semibold text-gray-900 dark:text-gray-100 mt-6 mb-3">
-                  {t('project.process')}
-                </h4>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                  The development process involved careful planning, iterative design, and comprehensive testing to ensure optimal user experience and performance. Modern development practices and industry standards were followed throughout the project lifecycle.
-                </p>
-              </>
-            )}
           </div>
         </motion.div>
       </div>

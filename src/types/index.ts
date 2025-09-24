@@ -2,6 +2,7 @@ export interface Project {
   id: string
   title: string
   description: string
+  shortDescription?: string
   descriptionLong?: string
   image: string
   link?: string
