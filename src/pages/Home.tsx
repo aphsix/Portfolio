@@ -1,85 +1,142 @@
-import { motion } from 'framer-motion'
-import { HiArrowRight } from 'react-icons/hi'
-import { FiGithub } from 'react-icons/fi'
-import { AiOutlineTwitter, AiOutlineYoutube } from 'react-icons/ai'
-import { SiTiktok } from 'react-icons/si'
-import { useState, useEffect } from 'react'
+import { motion } from "framer-motion";
+import { HiArrowRight } from "react-icons/hi";
+import { FiGithub } from "react-icons/fi";
+import { MdOutlineWork } from "react-icons/md";
+import { MdViewTimeline } from "react-icons/md";
+import { MdColorLens } from "react-icons/md";
+import { AiOutlineTwitter, AiOutlineYoutube } from "react-icons/ai";
+import { MdElectricBolt } from "react-icons/md";
+import { FaInstagram } from "react-icons/fa";
+import { PiGlobeBold } from 'react-icons/pi';
+// icons for skills
+import {
+  SiJavascript,
+  SiTypescript,
+  SiPython,
+  SiReact,
+  SiNextdotjs,
+  SiExpress,
+  SiNodedotjs,
+  SiGit,
+  SiDocker,
+  SiFigma,
+  SiAdobephotoshop,
+  SiMongodb,
+  SiMysql,
+  SiFirebase,
+  SiPostgresql,
+} from "react-icons/si";
+import { FaJava } from "react-icons/fa";
+import { useState, useEffect } from "react";
 
 const Home = () => {
-  const [typewriterText, setTypewriterText] = useState('')
-  const targetText = 'Hello, ~'
+  const [typewriterText, setTypewriterText] = useState("");
+  const targetText = "Hi, I am Aphisit Danchaodang";
 
   useEffect(() => {
-    let index = 0
+    let index = 0;
     const interval = setInterval(() => {
       if (index <= targetText.length) {
-        setTypewriterText(targetText.slice(0, index))
-        index++
+        setTypewriterText(targetText.slice(0, index));
+        index++;
       } else {
-        clearInterval(interval)
+        clearInterval(interval);
       }
-    }, 150)
+    }, 150);
 
-    return () => clearInterval(interval)
-  }, [])
+    return () => clearInterval(interval);
+  }, []);
 
   const bioTimeline = [
-    { year: '2024', event: 'Joined the Center of Specialty Innovation (CoSI) - research lab under Bangkok University' },
-    { year: '2023', event: 'Currently studying Computer Science at Bangkok University' },
-    { year: '2018', event: 'Successfully completed secondary education at Matthayomwatmaikrongtong School (Grade 7-12)' }
-  ]
+    {
+      year: "2025",
+      event:
+        "Work as a FullStack developer at the Center of Specialty Innovation (CoSI) - research lab under Bangkok University",
+    },
+    {
+      year: "2024",
+      event:
+        "Joined the Center of Specialty Innovation (CoSI) - research lab under Bangkok University",
+    },
+    {
+      year: "2023",
+      event: "Currently studying Computer Science at Bangkok University",
+    },
+    {
+      year: "2018",
+      event:
+        "Successfully completed secondary education at Matthayomwatmaikrongtong School (Grade 7-12)",
+    },
+    {
+      year: "2012",
+      event:
+        "Completed lower secondary education at Banthaicharoen School (Grade 1-6)",
+    },
+  ];
 
   const skills = {
-    'Languages & Frameworks': [
-      { name: 'JavaScript', color: 'bg-yellow-500' },
-      { name: 'TypeScript', color: 'bg-blue-600' },
-      { name: 'Python', color: 'bg-blue-700' },
-      { name: 'Java', color: 'bg-red-600' },
-      { name: 'React', color: 'bg-cyan-500' },
-      { name: 'Next.js', color: 'bg-gray-800' },
-      { name: 'Express', color: 'bg-gray-700' },
-      { name: 'Node.js', color: 'bg-green-500' },
+    "Languages & Frameworks": [
+      { name: "JavaScript", color: "bg-yellow-700", icon: SiJavascript },
+      { name: "TypeScript", color: "bg-blue-700", icon: SiTypescript },
+      { name: "Python", color: "bg-blue-700", icon: SiPython },
+      { name: "Java", color: "bg-red-700", icon: FaJava },
+      { name: "React", color: "bg-cyan-700", icon: SiReact },
+      { name: "Next.js", color: "bg-gray-700", icon: SiNextdotjs },
+      { name: "Express", color: "bg-gray-700", icon: SiExpress },
+      { name: "Node.js", color: "bg-green-700", icon: SiNodedotjs },
     ],
-    'Tools & Design': [
-      { name: 'Git', color: 'bg-red-500' },
-      { name: 'Docker', color: 'bg-blue-400' },
-      { name: 'Figma', color: 'bg-purple-500' },
-      { name: 'Photoshop', color: 'bg-blue-700' },
+    "Tools & Design": [
+      { name: "Git", color: "bg-red-700", icon: SiGit },
+      { name: "Docker", color: "bg-blue-700", icon: SiDocker },
+      { name: "Figma", color: "bg-purple-700", icon: SiFigma },
+      { name: "Photoshop", color: "bg-blue-700", icon: SiAdobephotoshop },
     ],
-    'Database': [
-      { name: 'MongoDB', color: 'bg-green-600' },
-      { name: 'MySQL', color: 'bg-orange-600' },
-      { name: 'Firebase', color: 'bg-yellow-600' },
-      { name: 'PostgreSQL', color: 'bg-blue-800' },
-    ]
-  }
-
+    Database: [
+      { name: "MongoDB", color: "bg-green-700", icon: SiMongodb },
+      { name: "MySQL", color: "bg-orange-700", icon: SiMysql },
+      { name: "Firebase", color: "bg-yellow-700", icon: SiFirebase },
+      { name: "PostgreSQL", color: "bg-blue-700", icon: SiPostgresql },
+    ],
+  };
 
   const socialLinks = [
-    { name: 'GitHub', icon: FiGithub, url: 'https://github.com', handle: '@yourhandle' },
-    { name: 'Twitter', icon: AiOutlineTwitter, url: 'https://twitter.com', handle: '@yourhandle' },
-    { name: 'YouTube', icon: AiOutlineYoutube, url: 'https://youtube.com', handle: '@yourchannel' },
-    { name: 'TikTok', icon: SiTiktok, url: 'https://tiktok.com', handle: '@yourhandle' },
-  ]
+    {
+      name: "GitHub",
+      icon: FiGithub,
+      url: "https://github.com/aphsix",
+      handle: "@aphsix",
+    },
+    {
+      name: "Instagram",
+      icon: FaInstagram ,
+      url: "https://www.instagram.com/_aphsx/",
+      handle: "@_aphsx",
+    }
+  ];
 
   const featuredProjects = [
     {
-      title: 'E-commerce Platform',
-      description: 'Modern shopping experience with React & Node.js',
-      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop&crop=center',
-      link: 'https://example.com'
+      title: "E-commerce Platform",
+      description: "Modern shopping experience with React & Node.js",
+      image:
+        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop&crop=center",
+      link: "https://example.com",
     },
     {
-      title: 'Task Management App',
-      description: 'Collaborative workspace for teams',
-      image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop&crop=center',
-      link: 'https://example.com'
-    }
-  ]
+      title: "Task Management App",
+      description: "Collaborative workspace for teams",
+      image:
+        "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop&crop=center",
+      link: "https://example.com",
+    },
+  ];
 
   return (
-    <div className="min-h-screen pt-20 bg-gray-50 dark:bg-gray-900">
-      <div className="max-w-2xl mx-auto px-6">
+    <div
+      className="min-h-screen bg-gray-50 dark:bg-gray-900"
+      style={{ paddingTop: "100px" }}
+    >
+      <div className="max-w-2xl mx-auto px-6 ">
         {/* Hero Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -87,25 +144,62 @@ const Home = () => {
           transition={{ duration: 0.8 }}
           className="mb-12"
         >
-          <div className="text-center mb-8">
-            <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-              {typewriterText}
-              <span className="animate-pulse text-teal-500">|</span>
-            </h1>
+          <div className="flex justify-center w-full mb-6">
+            <div className="relative w-full flex justify-center">
+              <input
+                type="text"
+                value={typewriterText}
+                readOnly
+                className="w-full text-center px-4 py-2 rounded-full bg-gradient-to-r from-teal-500 to-cyan-400 text-white font-semibold shadow focus:outline-none"
+              />
+              {/* Speech bubble tail */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 top-full">
+                <svg width="32" height="16" viewBox="0 0 32 16" fill="none">
+                  <polygon
+                    points="0,0 16,16 32,0"
+                    fill="url(#bubbleTailGradient)"
+                  />
+                  <defs>
+                    <linearGradient
+                      id="bubbleTailGradient"
+                      x1="0"
+                      y1="0"
+                      x2="32"
+                      y2="0"
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop stopColor="#14b8a6" />
+                      <stop offset="1" stopColor="#22d3ee" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div className="text-center mt-1/2">
+            {/* <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+          {typewriterText}
+          <span className="animate-pulse text-teal-500">|</span>
+        </h1> */}
           </div>
 
           <div className="flex flex-col items-center gap-6 mb-8">
             <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
-              transition={{ delay: 0.5, type: 'spring', stiffness: 260, damping: 20 }}
+              transition={{
+                delay: 0.5,
+                type: "spring",
+                stiffness: 260,
+                damping: 20,
+              }}
               className="relative"
             >
-              <div className="w-24 h-24 rounded-full bg-gradient-to-br from-teal-500 to-cyan-500 p-1">
+              <div className="w-32 h-32 rounded-full bg-gradient-to-br from-teal-500 to-cyan-500 p-1 transition-all duration-300 hover:scale-105 overflow-hidden border-4 border-white dark:border-gray-800 shadow-lg">
                 <img
-                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face"
+                  src="src/image/CSI00139.jpg"
                   alt="Profile"
-                  className="w-full h-full rounded-full object-cover"
+                  className="w-full h-full rounded-full object-cover "
                 />
               </div>
               <div className="absolute -top-2 -right-2 text-yellow-400 animate-bounce">
@@ -114,8 +208,12 @@ const Home = () => {
             </motion.div>
 
             <div className="text-center">
-              <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-1">Web Developer</h2>
-              <p className="text-sm text-gray-500 dark:text-gray-400">(Artist / Photographer / Designer)</p>
+              <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-1">
+                Aphisit Danchaodang
+              </h2>
+              <p className="text-sm text-gray-500 dark:text-gray-400">
+                FullStack Web Developer
+              </p>
             </div>
           </div>
         </motion.div>
@@ -128,14 +226,19 @@ const Home = () => {
           className="mb-12"
         >
           <div className="flex items-center gap-3 mb-4">
-            <div className="text-lg">💼</div>
-            <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">Work</h3>
+            <MdOutlineWork className="text-lg" />
+            <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">
+              Work
+            </h3>
           </div>
           <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 text-sm">
-            I'm a Full-Stack web developer currently interning at the Center of Specialty Innovation (CoSI), a research lab under Bangkok University.
-            I enjoy crafting web applications and working on software development projects involving multimedia applications and AI technologies.
-            Proficient in programming languages including JavaScript, Python, and Java, with experience in web development frameworks like React, Next.js, and Express.
-            When I'm offline, I relish capturing moments through my camera while traveling and experiencing new adventures. Drawing and music are also hobbies of mine.
+            I'm a Full-Stack web developer currently at the Center of Specialty
+            Innovation (CoSI), a research lab under Bangkok University.
+            experience as a full-stack developer, I have worked on various
+            projects, including ERP( Enterprise Resource Planning) platforms and
+            task management applications. My expertise lies in JavaScript,
+            TypeScript,React and Node.js, and I am passionate about building
+            efficient and scalable web applications.
           </p>
           <div className="text-center">
             <motion.button
@@ -157,34 +260,26 @@ const Home = () => {
           className="mb-10"
         >
           <div className="flex items-center gap-3 mb-4">
-            <div className="text-lg">📝</div>
-            <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">Bio</h3>
+            <MdViewTimeline className="text-lg" />
+            <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">
+              Bio
+            </h3>
           </div>
           <div className="space-y-2">
             {bioTimeline.map((item, index) => (
               <div key={index} className="flex gap-4">
-                <span className="text-teal-500 font-semibold text-sm min-w-[70px]">{item.year}</span>
-                <span className="text-gray-600 dark:text-gray-300 text-sm">{item.event}</span>
+                <span className="text-teal-500 font-semibold text-sm min-w-[70px]">
+                  {item.year}
+                </span>
+                <span className="text-gray-600 dark:text-gray-300 text-sm">
+                  {item.event}
+                </span>
               </div>
             ))}
           </div>
         </motion.section>
 
-        {/* Hobby Section */}
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.6 }}
-          className="mb-10"
-        >
-          <div className="flex items-center gap-3 mb-4">
-            <div className="text-lg">🎨</div>
-            <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">Hobby</h3>
-          </div>
-          <p className="text-gray-600 dark:text-gray-300 text-sm">
-            Photography, Music, Drawing, Playing Guitar, Traveling, Coding
-          </p>
-        </motion.section>
+        
 
         {/* Skills Section */}
         <motion.section
@@ -194,50 +289,100 @@ const Home = () => {
           className="mb-10"
         >
           <div className="flex items-center gap-3 mb-4">
-            <div className="text-lg">⚡</div>
-            <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">Skills</h3>
+            <MdElectricBolt className="text-lg" />
+            <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">
+              Skills
+            </h3>
           </div>
 
-          {Object.entries(skills).map(([category, items], categoryIndex) => (
-            <div key={category} className="mb-6">
-              <h4 className="text-teal-500 font-medium mb-3 text-sm">{category}</h4>
-              <div className="flex flex-wrap gap-2">
-                {items.map((skill, index) => (
-                  <motion.div
-                    key={skill.name}
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.6 + categoryIndex * 0.1 + index * 0.05 }}
-                    className="group cursor-pointer"
-                  >
-                    <div className={`w-10 h-10 ${skill.color} rounded-md flex items-center justify-center transition-transform group-hover:scale-110`}>
-                      <span className="text-white font-bold text-xs">
-                        {skill.name.charAt(0)}
-                      </span>
-                    </div>
-                    <div className="text-xs text-center mt-1 text-gray-500 dark:text-gray-400 group-hover:text-teal-500 transition-colors">
-                      {skill.name}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          ))}
+          <div className="space-y-6 mt-4">
+            {Object.entries(skills).map(([category, items], catIndex) => (
+              <motion.div
+          key={category}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 + catIndex * 0.12 }}
+          className="p-2 rounded-md shadow"
+              >
+          <div className="flex items-center justify-between mb-2">
+            <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+              {category}
+            </h4>
+            <span className="text-xs text-gray-500 dark:text-gray-400">
+              {items.length} items
+            </span>
+          </div>
+
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-1">
+            {items.map((skill, index) => (
+              <motion.div
+                key={skill.name}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.15 + index * 0.03 }}
+                // smooth scale on hover using framer-motion + gentle spring
+                whileHover={{ scale: 1.08 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="flex flex-col items-center p-2 rounded-md hover:shadow-lg transform-gpu transition-shadow duration-200"
+              >
+                <div
+            className={`w-12 h-12 ${skill.color} rounded-md flex items-center justify-center text-white font-semibold text-sm transition-all duration-300 ease-out`}
+                >
+            {skill.icon ? (
+              // render the icon component at size 18
+              //@ts-ignore
+              <skill.icon size={18} />
+            ) : (
+              skill.name.charAt(0)
+            )}
+                </div>
+
+                <div className="mt-2 text-xs text-center text-gray-600 dark:text-gray-300">
+            {skill.name}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.section>
+        {/* Hobby Section */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.6 }}
+          className="mb-10"
+        >
+          <div className="flex items-center gap-3 mb-4">
+            <MdColorLens className="text-lg" />
+            <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">
+              Hobby
+            </h3>
+          </div>
+
+          <p className="text-gray-600 dark:text-gray-300 text-sm">
+            Photography, Music, Drawing, Playing Football, Traveling, Coding
+          </p>
         </motion.section>
 
         {/* I ♥ Section */}
-        <motion.section
+        {/* <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.6 }}
           className="mb-10"
         >
           <div className="flex items-center gap-3 mb-4">
-            <div className="text-lg">💖</div>
-            <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">I ♥</h3>
+            <MdColorLens className="text-lg" />
+            <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">
+              I ♥
+            </h3>
           </div>
           <p className="text-gray-600 dark:text-gray-300 text-sm">
-            Art, Music, Drawing, Playing Guitar, Photography, Machine Learning, and{' '}
+            Art, Music, Drawing, Playing Guitar, Photography, Machine Learning,
+            and{" "}
             <a
               href="https://www.craftz.dog/works/fourpainters"
               className="text-teal-500 hover:underline"
@@ -245,9 +390,10 @@ const Home = () => {
               rel="noopener noreferrer"
             >
               Turning coffee into code
-            </a>!
+            </a>
+            !
           </p>
-        </motion.section>
+        </motion.section> */}
 
         {/* On the web Section */}
         <motion.section
@@ -257,8 +403,10 @@ const Home = () => {
           className="mb-10"
         >
           <div className="flex items-center gap-3 mb-4">
-            <div className="text-lg">🌐</div>
-            <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">On the web</h3>
+            <PiGlobeBold className="text-lg" />
+            <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">
+              On the web
+            </h3>
           </div>
           <div className="space-y-2">
             {socialLinks.map((social, index) => (
@@ -291,19 +439,21 @@ const Home = () => {
         >
           <div className="flex items-center gap-3 mb-4">
             <div className="text-lg">📧</div>
-            <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">Newsletter</h3>
+            <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">
+              Contact Email
+            </h3>
           </div>
           <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
-            Join the newsletter and get updates on new content and projects.
+            Contact me for work opportunities or project collaborations
           </p>
           <div className="flex gap-2">
             <input
               type="email"
-              placeholder="Your email address"
+              placeholder="Send me your email and description what you looking for"
               className="flex-1 px-3 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-sm text-gray-900 dark:text-gray-100 placeholder-gray-500 focus:outline-none focus:border-teal-500"
             />
             <button className="px-4 py-2 bg-teal-500 hover:bg-teal-600 text-white rounded-md text-sm transition-colors">
-              Subscribe
+              Contact
             </button>
           </div>
         </motion.section>
@@ -338,14 +488,16 @@ const Home = () => {
                   <h4 className="font-semibold text-sm text-gray-900 dark:text-gray-100 group-hover:text-teal-500 transition-colors">
                     {project.title}
                   </h4>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{project.description}</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                    {project.description}
+                  </p>
                 </div>
               </motion.a>
             ))}
           </div>
         </motion.section>
 
-        {/* Support Section */}
+        {/* Support Section
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -359,23 +511,28 @@ const Home = () => {
           >
             ☕ Support me on Ko-fi
           </motion.button>
-        </motion.section>
+        </motion.section> */}
 
         {/* Footer */}
-        <footer className="text-center py-6 border-t border-gray-200 dark:border-gray-700 mt-8">
+        {/* <footer className="text-center py-6 border-t border-gray-200 dark:border-gray-700 mt-8">
           <p className="text-gray-500 dark:text-gray-400 text-xs">
             © 2025 aphsx. All Rights Reserved.
           </p>
           <p className="text-gray-400 dark:text-gray-500 text-xs mt-1">
-            Inspired by{' '}
-            <a href="https://www.craftz.dog/" target="_blank" rel="noopener noreferrer" className="text-teal-500 hover:underline">
+            Inspired by{" "}
+            <a
+              href="https://www.craftz.dog/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-teal-500 hover:underline"
+            >
               craftz.dog
             </a>
           </p>
-        </footer>
+        </footer> */}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
