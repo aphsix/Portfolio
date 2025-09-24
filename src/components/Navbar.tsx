@@ -20,7 +20,7 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 w-full z-50 backdrop-blur-md bg-white/80 dark:bg-gray-900/80  ">
-      <div className="max-w-4xl mx-auto px-6">
+      <div className="max-w-2xl mx-auto px-6">
         <div className="flex justify-between items-center h-16">
           <Link
             to="/"

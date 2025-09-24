@@ -24,6 +24,9 @@ const WorkSection = ({ title, projects, showDivider = false }: WorkSectionProps)
     visible: { opacity: 1, y: 0 }
   }
 
+  // กำหนด default image
+  const defaultImage = '/images/CSI00138.jpg'
+
   return (
     <>
       {showDivider && (
@@ -46,8 +49,8 @@ const WorkSection = ({ title, projects, showDivider = false }: WorkSectionProps)
           {title}
         </h3>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {projects.map((project, index) => (
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-10">
+          {projects.map((project) => (
             <motion.div
               key={project.id}
               variants={itemVariants}
@@ -59,7 +62,7 @@ const WorkSection = ({ title, projects, showDivider = false }: WorkSectionProps)
               >
                 <div className="relative overflow-hidden rounded-xl mb-4">
                   <img
-                    src={project.image}
+                    src={project.image || defaultImage} // ใช้ defaultImage ถ้า project.image ไม่มี
                     alt={project.title}
                     className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
                     loading="lazy"
@@ -70,7 +73,9 @@ const WorkSection = ({ title, projects, showDivider = false }: WorkSectionProps)
                 </h4>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
                   {project.description}
+                  
                 </p>
+               
               </Link>
             </motion.div>
           ))}

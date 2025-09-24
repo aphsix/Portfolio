@@ -1,20 +1,20 @@
-import { useParams, Navigate } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import { HiArrowLeft, HiExternalLink } from 'react-icons/hi'
-import { FiGithub } from 'react-icons/fi'
-import { Link } from 'react-router-dom'
-import { projects } from '../data/projects'
+import { useParams, Navigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import { HiArrowLeft, HiExternalLink } from "react-icons/hi";
+import { FiGithub } from "react-icons/fi";
+import { Link } from "react-router-dom";
+import { projects } from "../data/projects";
 
 const ProjectDetail = () => {
-  const { projectId } = useParams()
-  const project = projects.find(p => p.id === projectId)
+  const { projectId } = useParams();
+  const project = projects.find((p) => p.id === projectId);
 
   if (!project) {
-    return <Navigate to="/works" replace />
+    return <Navigate to="/works" replace />;
   }
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen pt-20 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-2xl mx-auto px-6">
         {/* Back Button */}
         <motion.div
@@ -25,7 +25,7 @@ const ProjectDetail = () => {
         >
           <Link
             to="/works"
-            className="inline-flex items-center gap-2 text-dark-accent hover:text-dark-accent/80 transition-colors text-sm"
+            className="inline-flex items-center gap-2 text-teal-500 hover:text-teal-600 transition-colors text-sm"
           >
             <HiArrowLeft size={16} />
             Back to Works
@@ -39,10 +39,10 @@ const ProjectDetail = () => {
           transition={{ duration: 0.6 }}
           className="mb-8"
         >
-          <h1 className="text-3xl md:text-4xl font-bold text-dark-text mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
             {project.title}
           </h1>
-          <p className="text-gray-400 text-lg leading-relaxed">
+          <p className="text-gray-600 dark:text-gray-400 text-lg leading-relaxed">
             {project.description}
           </p>
         </motion.div>
@@ -54,7 +54,7 @@ const ProjectDetail = () => {
           transition={{ delay: 0.2, duration: 0.6 }}
           className="mb-8"
         >
-          <div className="aspect-video rounded-lg overflow-hidden bg-dark-card">
+          <div className="aspect-video rounded-lg overflow-hidden bg-white dark:bg-gray-800">
             <img
               src={project.image}
               alt={project.title}
@@ -73,12 +73,14 @@ const ProjectDetail = () => {
           {/* Tags */}
           {project.tags && project.tags.length > 0 && (
             <div className="mb-6">
-              <h3 className="text-lg font-semibold text-dark-text mb-3">Technologies</h3>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-3">
+                Technologies
+              </h3>
               <div className="flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-3 py-1 text-sm bg-dark-accent/20 text-dark-accent rounded-md"
+                    className="px-3 py-1 text-sm bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 rounded-md"
                   >
                     {tag}
                   </span>
@@ -94,7 +96,7 @@ const ProjectDetail = () => {
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-dark-accent hover:bg-dark-accent/90 text-white px-4 py-2 rounded-md text-sm transition-colors"
+                className="inline-flex items-center gap-2 bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-md text-sm transition-colors"
               >
                 <HiExternalLink size={16} />
                 Visit Project
@@ -105,7 +107,7 @@ const ProjectDetail = () => {
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-dark-card hover:bg-dark-card/80 text-dark-text border border-gray-700 px-4 py-2 rounded-md text-sm transition-colors"
+                className="inline-flex items-center gap-2 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-gray-100 border border-gray-300 dark:border-gray-600 px-4 py-2 rounded-md text-sm transition-colors"
               >
                 <FiGithub size={16} />
                 View Code
@@ -121,24 +123,29 @@ const ProjectDetail = () => {
           transition={{ delay: 0.4, duration: 0.6 }}
           className="mb-12"
         >
-          <h3 className="text-lg font-semibold text-dark-text mb-4">About this project</h3>
-          <div className="prose prose-invert max-w-none">
-            <p className="text-gray-300 leading-relaxed">
-              {project.description}
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+            About this project
+          </h3>
+          <div className="prose prose-gray dark:prose-invert max-w-none">
+
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+              {project.descriptionLong}
             </p>
-            <p className="text-gray-300 leading-relaxed mt-4">
-              This project demonstrates modern web development practices and showcases
-              the implementation of various technologies to create a robust and scalable solution.
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mt-4">
+              This project demonstrates modern web development practices and
+              showcases the implementation of various technologies to create a
+              robust and scalable solution.
             </p>
-            <p className="text-gray-300 leading-relaxed mt-4">
-              The development process involved careful planning, iterative design, and
-              comprehensive testing to ensure optimal user experience and performance.
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mt-4">
+              The development process involved careful planning, iterative
+              design, and comprehensive testing to ensure optimal user
+              experience and performance.
             </p>
           </div>
         </motion.div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ProjectDetail
+export default ProjectDetail;

@@ -1,53 +1,11 @@
 import { motion } from 'framer-motion'
+import { usesData } from '../data/usesData'
 
 const Uses = () => {
-  const usesData = [
-    {
-      category: "Workstation",
-      items: [
-        "MacBook Pro 16\" 2021 (M1 Max, 32GB RAM)",
-        "Dell UltraSharp 27\" 4K Monitor",
-        "Magic Keyboard & Magic Mouse",
-        "Herman Miller Aeron Chair",
-        "Standing Desk Converter"
-      ]
-    },
-    {
-      category: "Development",
-      items: [
-        "Visual Studio Code",
-        "Terminal with Oh My Zsh",
-        "Git & GitHub",
-        "Docker & Docker Compose",
-        "Postman for API testing",
-        "Figma for design"
-      ]
-    },
-    {
-      category: "Software",
-      items: [
-        "Notion for notes and planning",
-        "Spotify for music",
-        "1Password for password management",
-        "CleanMyMac for system maintenance",
-        "Raycast for productivity"
-      ]
-    },
-    {
-      category: "Photography",
-      items: [
-        "Sony α7 III",
-        "FE 24-70mm f/2.8 GM",
-        "Adobe Lightroom",
-        "Peak Design Camera Strap",
-        "Manfrotto Tripod"
-      ]
-    }
-  ]
 
   return (
     <div className="min-h-screen pt-20 bg-gray-50 dark:bg-gray-900">
-      <div className="max-w-4xl mx-auto px-6">
+      <div className="max-w-2xl mx-auto px-6">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -75,10 +33,21 @@ const Uses = () => {
               transition={{ delay: sectionIndex * 0.1, duration: 0.6 }}
               className="mb-8"
             >
-              <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 flex items-center gap-2">
-                <span className="text-teal-500">#</span>
-                {section.category}
-              </h2>
+              <div className="flex items-center gap-4 mb-4">
+                <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 flex items-center gap-2">
+                  <span className="text-teal-500">#</span>
+                  {section.category}
+                </h2>
+                {section.image && (
+                  <div className="w-16 h-12 rounded-md overflow-hidden flex-shrink-0">
+                    <img
+                      src={section.image}
+                      alt={section.category}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                )}
+              </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {section.items.map((item, itemIndex) => (

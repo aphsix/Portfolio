@@ -1,37 +1,19 @@
 import { motion } from "framer-motion";
 import { HiArrowRight } from "react-icons/hi";
-import { FiGithub } from "react-icons/fi";
 import { MdOutlineWork } from "react-icons/md";
 import { MdViewTimeline } from "react-icons/md";
 import { MdColorLens } from "react-icons/md";
-import { AiOutlineTwitter, AiOutlineYoutube } from "react-icons/ai";
 import { MdElectricBolt } from "react-icons/md";
-import { FaInstagram } from "react-icons/fa";
 import { PiGlobeBold } from 'react-icons/pi';
-// icons for skills
-import {
-  SiJavascript,
-  SiTypescript,
-  SiPython,
-  SiReact,
-  SiNextdotjs,
-  SiExpress,
-  SiNodedotjs,
-  SiGit,
-  SiDocker,
-  SiFigma,
-  SiAdobephotoshop,
-  SiMongodb,
-  SiMysql,
-  SiFirebase,
-  SiPostgresql,
-} from "react-icons/si";
-import { FaJava } from "react-icons/fa";
 import { useState, useEffect } from "react";
+import { bioTimeline, personalInfo, featuredProjects } from "../data/personalData";
+import { skills } from "../data/skillsData";
+import { socialLinks } from "../data/socialData";
 
 const Home = () => {
   const [typewriterText, setTypewriterText] = useState("");
-  const targetText = "Hi, I am Aphisit Danchaodang";
+  const [emailContent, setEmailContent] = useState("");
+  const targetText = personalInfo.greeting;
 
   useEffect(() => {
     let index = 0;
@@ -47,89 +29,18 @@ const Home = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const bioTimeline = [
-    {
-      year: "2025",
-      event:
-        "Work as a FullStack developer at the Center of Specialty Innovation (CoSI) - research lab under Bangkok University",
-    },
-    {
-      year: "2024",
-      event:
-        "Joined the Center of Specialty Innovation (CoSI) - research lab under Bangkok University",
-    },
-    {
-      year: "2023",
-      event: "Currently studying Computer Science at Bangkok University",
-    },
-    {
-      year: "2018",
-      event:
-        "Successfully completed secondary education at Matthayomwatmaikrongtong School (Grade 7-12)",
-    },
-    {
-      year: "2012",
-      event:
-        "Completed lower secondary education at Banthaicharoen School (Grade 1-6)",
-    },
-  ];
+  const handleEmailContact = () => {
+    const recipient = personalInfo.email;
+    const subject = "Work Opportunity - Portfolio Contact";
+    const body = emailContent || "Hello, I am interested in discussing work opportunities with you.";
 
-  const skills = {
-    "Languages & Frameworks": [
-      { name: "JavaScript", color: "bg-yellow-700", icon: SiJavascript },
-      { name: "TypeScript", color: "bg-blue-700", icon: SiTypescript },
-      { name: "Python", color: "bg-blue-700", icon: SiPython },
-      { name: "Java", color: "bg-red-700", icon: FaJava },
-      { name: "React", color: "bg-cyan-700", icon: SiReact },
-      { name: "Next.js", color: "bg-gray-700", icon: SiNextdotjs },
-      { name: "Express", color: "bg-gray-700", icon: SiExpress },
-      { name: "Node.js", color: "bg-green-700", icon: SiNodedotjs },
-    ],
-    "Tools & Design": [
-      { name: "Git", color: "bg-red-700", icon: SiGit },
-      { name: "Docker", color: "bg-blue-700", icon: SiDocker },
-      { name: "Figma", color: "bg-purple-700", icon: SiFigma },
-      { name: "Photoshop", color: "bg-blue-700", icon: SiAdobephotoshop },
-    ],
-    Database: [
-      { name: "MongoDB", color: "bg-green-700", icon: SiMongodb },
-      { name: "MySQL", color: "bg-orange-700", icon: SiMysql },
-      { name: "Firebase", color: "bg-yellow-700", icon: SiFirebase },
-      { name: "PostgreSQL", color: "bg-blue-700", icon: SiPostgresql },
-    ],
+    const mailtoUrl = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.open(mailtoUrl, '_blank');
   };
 
-  const socialLinks = [
-    {
-      name: "GitHub",
-      icon: FiGithub,
-      url: "https://github.com/aphsix",
-      handle: "@aphsix",
-    },
-    {
-      name: "Instagram",
-      icon: FaInstagram ,
-      url: "https://www.instagram.com/_aphsx/",
-      handle: "@_aphsx",
-    }
-  ];
 
-  const featuredProjects = [
-    {
-      title: "E-commerce Platform",
-      description: "Modern shopping experience with React & Node.js",
-      image:
-        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop&crop=center",
-      link: "https://example.com",
-    },
-    {
-      title: "Task Management App",
-      description: "Collaborative workspace for teams",
-      image:
-        "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop&crop=center",
-      link: "https://example.com",
-    },
-  ];
+
+
 
   return (
     <div
@@ -197,7 +108,7 @@ const Home = () => {
             >
               <div className="w-32 h-32 rounded-full bg-gradient-to-br from-teal-500 to-cyan-500 p-1 transition-all duration-300 hover:scale-105 overflow-hidden border-4 border-white dark:border-gray-800 shadow-lg">
                 <img
-                  src="src/image/CSI00139.jpg"
+                  src={personalInfo.profileImage}
                   alt="Profile"
                   className="w-full h-full rounded-full object-cover "
                 />
@@ -209,10 +120,10 @@ const Home = () => {
 
             <div className="text-center">
               <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-1">
-                Aphisit Danchaodang
+                {personalInfo.name}
               </h2>
               <p className="text-sm text-gray-500 dark:text-gray-400">
-                FullStack Web Developer
+                {personalInfo.title}
               </p>
             </div>
           </div>
@@ -319,11 +230,15 @@ const Home = () => {
                 key={skill.name}
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.15 + index * 0.03 }}
+                transition={{
+                  delay: 0.15 + index * 0.03,
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 20
+                }}
                 // smooth scale on hover using framer-motion + gentle spring
                 whileHover={{ scale: 1.08 }}
                 whileTap={{ scale: 0.98 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 className="flex flex-col items-center p-2 rounded-md hover:shadow-lg transform-gpu transition-shadow duration-200"
               >
                 <div
@@ -446,14 +361,19 @@ const Home = () => {
           <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
             Contact me for work opportunities or project collaborations
           </p>
-          <div className="flex gap-2">
-            <input
-              type="email"
-              placeholder="Send me your email and description what you looking for"
-              className="flex-1 px-3 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-sm text-gray-900 dark:text-gray-100 placeholder-gray-500 focus:outline-none focus:border-teal-500"
+          <div className="space-y-3">
+            <textarea
+              value={emailContent}
+              onChange={(e) => setEmailContent(e.target.value)}
+              placeholder="Describe what you're looking for or your project details..."
+              className="w-full px-3 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-sm text-gray-900 dark:text-gray-100 placeholder-gray-500 focus:outline-none focus:border-teal-500 resize-none"
+              rows={4}
             />
-            <button className="px-4 py-2 bg-teal-500 hover:bg-teal-600 text-white rounded-md text-sm transition-colors">
-              Contact
+            <button
+              onClick={handleEmailContact}
+              className="w-full px-4 py-2 bg-teal-500 hover:bg-teal-600 text-white rounded-md text-sm transition-colors"
+            >
+              Contact via Email
             </button>
           </div>
         </motion.section>
