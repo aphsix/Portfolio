@@ -4,9 +4,11 @@ import { HiArrowLeft, HiExternalLink } from "react-icons/hi";
 import { FiGithub } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { projects } from "../data/projects";
+import { useLanguage } from '../contexts/LanguageContext';
 
 const ProjectDetail = () => {
   const { projectId } = useParams();
+  const { t } = useLanguage();
   const project = projects.find((p) => p.id === projectId);
 
   if (!project) {
@@ -28,7 +30,7 @@ const ProjectDetail = () => {
             className="inline-flex items-center gap-2 text-teal-500 hover:text-teal-600 transition-colors text-sm"
           >
             <HiArrowLeft size={16} />
-            Back to Works
+{t('project.back')}
           </Link>
         </motion.div>
 
@@ -74,7 +76,7 @@ const ProjectDetail = () => {
           {project.tags && project.tags.length > 0 && (
             <div className="mb-6">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-3">
-                Technologies
+                {t('project.technologies')}
               </h3>
               <div className="flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
@@ -89,34 +91,46 @@ const ProjectDetail = () => {
             </div>
           )}
 
-          {/* Links */}
-          <div className="flex gap-4">
-            {project.link && (
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-md text-sm transition-colors"
-              >
-                <HiExternalLink size={16} />
-                Visit Project
-              </a>
-            )}
-            {project.github && (
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-gray-100 border border-gray-300 dark:border-gray-600 px-4 py-2 rounded-md text-sm transition-colors"
-              >
-                <FiGithub size={16} />
-                View Code
-              </a>
-            )}
+          {/* Action Links */}
+          <div className="flex flex-wrap gap-3">
+            <a
+              href={project.link || "#"}
+              target={project.link ? "_blank" : "_self"}
+              rel={project.link ? "noopener noreferrer" : ""}
+              className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                project.link
+                  ? "bg-teal-500 hover:bg-teal-600 text-white shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  : "bg-gray-300 dark:bg-gray-700 text-gray-500 cursor-not-allowed"
+              }`}
+              onClick={(e) => {
+                if (!project.link) e.preventDefault();
+              }}
+            >
+              <HiExternalLink size={16} />
+{project.link ? t('project.visit') : t('project.coming_soon')}
+            </a>
+
+            <a
+              href={project.github || "#"}
+              target={project.github ? "_blank" : "_self"}
+              rel={project.github ? "noopener noreferrer" : ""}
+              className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 border ${
+                project.github
+                  ? "bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+                  : "bg-gray-300 dark:bg-gray-700 text-gray-500 cursor-not-allowed border-gray-400 dark:border-gray-600"
+              }`}
+              onClick={(e) => {
+                if (!project.github) e.preventDefault();
+              }}
+            >
+              <FiGithub size={16} />
+{project.github ? t('project.code') : t('project.private')}
+            </a>
           </div>
+
         </motion.div>
 
-        {/* Project Details (Placeholder) */}
+        {/* Project Details */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -124,23 +138,31 @@ const ProjectDetail = () => {
           className="mb-12"
         >
           <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
-            About this project
+            {t('project.about')}
           </h3>
           <div className="prose prose-gray dark:prose-invert max-w-none">
-
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              {project.descriptionLong}
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-base">
+              {project.descriptionLong || project.description}
             </p>
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mt-4">
-              This project demonstrates modern web development practices and
-              showcases the implementation of various technologies to create a
-              robust and scalable solution.
-            </p>
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mt-4">
-              The development process involved careful planning, iterative
-              design, and comprehensive testing to ensure optimal user
-              experience and performance.
-            </p>
+            {project.descriptionLong && (
+              <>
+                <h4 className="text-md font-semibold text-gray-900 dark:text-gray-100 mt-6 mb-3">
+                  {t('project.features')}
+                </h4>
+                <ul className="text-gray-700 dark:text-gray-300 leading-relaxed list-disc list-inside space-y-2">
+                  <li>Modern, responsive design with cross-platform compatibility</li>
+                  <li>Advanced user interface with intuitive navigation</li>
+                  <li>Performance optimized for fast loading and smooth interactions</li>
+                  <li>Comprehensive testing and quality assurance</li>
+                </ul>
+                <h4 className="text-md font-semibold text-gray-900 dark:text-gray-100 mt-6 mb-3">
+                  {t('project.process')}
+                </h4>
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                  The development process involved careful planning, iterative design, and comprehensive testing to ensure optimal user experience and performance. Modern development practices and industry standards were followed throughout the project lifecycle.
+                </p>
+              </>
+            )}
           </div>
         </motion.div>
       </div>

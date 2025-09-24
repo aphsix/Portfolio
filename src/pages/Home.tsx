@@ -12,11 +12,13 @@ import {
 } from "../data/personalData";
 import { skills } from "../data/skillsData";
 import { socialLinks } from "../data/socialData";
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Home = () => {
+  const { t } = useLanguage();
   const [typewriterText, setTypewriterText] = useState("");
   const [emailContent, setEmailContent] = useState("");
-  const targetText = personalInfo.greeting;
+  const targetText = t('home.greeting');
 
   useEffect(() => {
     let index = 0;
@@ -123,10 +125,10 @@ const Home = () => {
 
             <div className="text-center">
               <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-1">
-                {personalInfo.name}
+{t('home.name')}
               </h2>
               <p className="text-sm text-gray-500 dark:text-gray-400">
-                {personalInfo.title}
+{t('home.title')}
               </p>
             </div>
           </div>
@@ -236,14 +238,16 @@ const Home = () => {
                         stiffness: 300,
                         damping: 20,
                       }}
-                      whileHover={{ scale: 1.12 }}
-                      whileTap={{ scale: 0.96 }}
-                      transition={{
-                        duration: 0.15,
-                        type: "spring",
-                        stiffness: 400,
-                        damping: 15,
+                      whileHover={{
+                        scale: 1.12,
+                        transition: {
+                          duration: 0.15,
+                          type: "spring",
+                          stiffness: 400,
+                          damping: 15,
+                        }
                       }}
+                      whileTap={{ scale: 0.96 }}
                       className="flex flex-col items-center p-2 rounded-md cursor-pointer"
                     >
                       <div

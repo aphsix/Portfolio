@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
 import { usesData } from "../data/usesData";
+import { useLanguage } from '../contexts/LanguageContext';
 
 
 
 const Uses = () => {
-
+  const { t } = useLanguage()
   const defaultImage = '/images/CSI00139.jpg'
   return (
     <div className="min-h-screen pt-20 bg-gray-50 dark:bg-gray-900">
@@ -17,12 +18,10 @@ const Uses = () => {
           className="text-center mb-8"
         >
           <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-3">
-            Uses
+            {t('uses.title')}
           </h1>
           <p className="text-gray-500 dark:text-gray-400 text-sm max-w-2xl mx-auto">
-            Here's what tech I'm currently using for coding, videos, and music.
-            Most of these have been accumulated over the past few years, with a
-            few recent additions.
+            {t('uses.description')}
           </p>
         </motion.div>
 
@@ -41,33 +40,33 @@ const Uses = () => {
                 {section.category}
               </h2>
 
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {section.items.map((item, itemIndex) => (
                   <motion.div
                     key={itemIndex}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
                     transition={{
                       delay: sectionIndex * 0.1 + itemIndex * 0.05,
                       duration: 0.4,
                     }}
-                    className=" items-center p-3 bg-white dark:bg-gray-800 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors shadow-sm"
+                    className="bg-white dark:bg-gray-800 rounded-lg p-4 hover:shadow-lg dark:hover:bg-gray-750 transition-all duration-200 border border-gray-200 dark:border-gray-700 group"
                   >
                     {item.image && (
-                      <div className=" rounded-md overflow-hidden flex-shrink-0 mr-3">
+                      <div className="aspect-video rounded-md overflow-hidden mb-3 bg-gray-100 dark:bg-gray-700 flex items-center justify-center p-2">
                         <img
-                          width={600}
-                          height={400}
-                          src={item.image || defaultImage} 
+                          src={item.image}
                           alt={item.name}
-                          style={{ aspectRatio: '600/400' }}
-                          className="w-full h-full object-cover"
+                          className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-200"
+                          onError={(e) => {
+                            e.currentTarget.src = defaultImage;
+                          }}
                         />
                       </div>
                     )}
-                    <span className="text-gray-700 dark:text-gray-300 text-sm">
+                    <h3 className="text-gray-900 dark:text-gray-100 font-medium text-center text-sm">
                       {item.name}
-                    </span>
+                    </h3>
                   </motion.div>
                 ))}
               </div>
@@ -84,8 +83,8 @@ const Uses = () => {
         >
           <p className="text-gray-600 dark:text-gray-400 text-sm">
             💡{" "}
-            <strong className="text-gray-900 dark:text-gray-100">Note:</strong>{" "}
-            This list is ever-evolving as I discover new tools and technologies
+<strong className="text-gray-900 dark:text-gray-100">{t('uses.note.title')}:</strong>{" "}
+            {t('uses.note.description')}
           </p>
         </motion.div>
       </div>

@@ -1,19 +1,20 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { HiMenu, HiX } from 'react-icons/hi'
-import { FiGithub, FiMoon, FiSun } from 'react-icons/fi'
+import { FiGithub, FiMoon, FiSun, FiGlobe } from 'react-icons/fi'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTheme } from '../contexts/ThemeContext'
+import { useLanguage } from '../contexts/LanguageContext'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const { isDark, toggleTheme } = useTheme()
+  const { language, setLanguage, t } = useLanguage()
   const location = useLocation()
 
   const navItems = [
-    { name: 'Works', path: '/works' },
-    // { name: 'Posts', path: '/posts' },
-    { name: 'Uses', path: '/uses' },
+    { name: t('nav.works'), path: '/works' },
+    { name: t('nav.uses'), path: '/uses' },
   ]
 
   const isActive = (path: string) => location.pathname === path
@@ -53,8 +54,16 @@ const Navbar = () => {
               className="flex items-center gap-1 text-gray-700 dark:text-gray-300 hover:text-teal-500 transition-colors duration-200"
             >
               <FiGithub size={16} />
-              <span className="text-sm">GitHub</span>
+              <span className="text-sm">{t('nav.github')}</span>
             </a>
+            <button
+              onClick={() => setLanguage(language === 'en' ? 'th' : 'en')}
+              className="text-gray-700 dark:text-gray-300 hover:text-teal-500 transition-colors duration-200 p-2 flex items-center gap-1"
+              title={language === 'en' ? 'เปลี่ยนเป็นภาษาไทย' : 'Switch to English'}
+            >
+              <FiGlobe size={16} />
+              <span className="text-xs font-medium uppercase">{language}</span>
+            </button>
             <button
               onClick={toggleTheme}
               className="text-gray-700 dark:text-gray-300 hover:text-teal-500 transition-colors duration-200 p-2"
@@ -83,6 +92,16 @@ const Navbar = () => {
             className="md:hidden backdrop-blur-md bg-white/90 dark:bg-gray-900/90 border-b border-gray-200 dark:border-gray-700"
           >
             <div className="px-4 py-4 space-y-4">
+              <button
+                onClick={() => {
+                  setLanguage(language === 'en' ? 'th' : 'en')
+                  setIsOpen(false)
+                }}
+                className="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-teal-500 transition-colors duration-200"
+              >
+                <FiGlobe size={20} />
+                <span className="text-sm font-medium">{language === 'en' ? 'ไทย' : 'English'}</span>
+              </button>
               {navItems.map((item) => (
                 <Link
                   key={item.name}
@@ -105,7 +124,7 @@ const Navbar = () => {
                 onClick={() => setIsOpen(false)}
               >
                 <FiGithub size={20} />
-                <span className="text-sm font-medium">GitHub</span>
+                <span className="text-sm font-medium">{t('nav.github')}</span>
               </a>
             </div>
           </motion.div>
