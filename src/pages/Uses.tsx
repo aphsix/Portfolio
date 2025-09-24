@@ -1,8 +1,11 @@
-import { motion } from 'framer-motion'
-import { usesData } from '../data/usesData'
+import { motion } from "framer-motion";
+import { usesData } from "../data/usesData";
+
+
 
 const Uses = () => {
 
+  const defaultImage = '/images/CSI00139.jpg'
   return (
     <div className="min-h-screen pt-20 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-2xl mx-auto px-6">
@@ -18,8 +21,8 @@ const Uses = () => {
           </h1>
           <p className="text-gray-500 dark:text-gray-400 text-sm max-w-2xl mx-auto">
             Here's what tech I'm currently using for coding, videos, and music.
-            Most of these have been accumulated over the past few years, with
-            a few recent additions.
+            Most of these have been accumulated over the past few years, with a
+            few recent additions.
           </p>
         </motion.div>
 
@@ -33,23 +36,12 @@ const Uses = () => {
               transition={{ delay: sectionIndex * 0.1, duration: 0.6 }}
               className="mb-8"
             >
-              <div className="flex items-center gap-4 mb-4">
-                <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 flex items-center gap-2">
-                  <span className="text-teal-500">#</span>
-                  {section.category}
-                </h2>
-                {section.image && (
-                  <div className="w-16 h-12 rounded-md overflow-hidden flex-shrink-0">
-                    <img
-                      src={section.image}
-                      alt={section.category}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                )}
-              </div>
+              <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 flex itesms-center gap-2 mb-4">
+                <span className="text-teal-500">#</span>
+                {section.category}
+              </h2>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 {section.items.map((item, itemIndex) => (
                   <motion.div
                     key={itemIndex}
@@ -57,12 +49,25 @@ const Uses = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{
                       delay: sectionIndex * 0.1 + itemIndex * 0.05,
-                      duration: 0.4
+                      duration: 0.4,
                     }}
-                    className="flex items-center p-3 bg-white dark:bg-gray-800 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors shadow-sm"
+                    className=" items-center p-3 bg-white dark:bg-gray-800 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors shadow-sm"
                   >
-                    <div className="w-2 h-2 bg-teal-500 rounded-full mr-3 flex-shrink-0"></div>
-                    <span className="text-gray-700 dark:text-gray-300 text-sm">{item}</span>
+                    {item.image && (
+                      <div className=" rounded-md overflow-hidden flex-shrink-0 mr-3">
+                        <img
+                          width={600}
+                          height={400}
+                          src={item.image || defaultImage} 
+                          alt={item.name}
+                          style={{ aspectRatio: '600/400' }}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    )}
+                    <span className="text-gray-700 dark:text-gray-300 text-sm">
+                      {item.name}
+                    </span>
                   </motion.div>
                 ))}
               </div>
@@ -78,14 +83,14 @@ const Uses = () => {
           className="mt-12 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm"
         >
           <p className="text-gray-600 dark:text-gray-400 text-sm">
-            💡 <strong className="text-gray-900 dark:text-gray-100">Note:</strong> This page is
-            inspired by Wes Bos's uses page. It's a great way to share what
-            tools and software you're using with others in the community.
+            💡{" "}
+            <strong className="text-gray-900 dark:text-gray-100">Note:</strong>{" "}
+            This list is ever-evolving as I discover new tools and technologies
           </p>
         </motion.div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Uses
+export default Uses;

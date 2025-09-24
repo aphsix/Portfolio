@@ -3,47 +3,79 @@ import { UsesCategory } from '../types'
 export const usesData: UsesCategory[] = [
   {
     category: "Workstation",
-    image: "https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=300&fit=crop&crop=center",
     items: [
-      "MacBook Pro 16\" 2021 (M1 Max, 32GB RAM)",
-      "Dell UltraSharp 27\" 4K Monitor",
-      "Magic Keyboard & Magic Mouse",
-      "Herman Miller Aeron Chair",
-      "Standing Desk Converter"
+      {
+        name: "MacBook Pro 16\" 2021",
+        image: "/images/portfolio.png"
+      },
+      {
+        name: "Mic Maono pd200x",
+        image: "https://down-th.img.susercontent.com/file/cn-11134207-7qukw-ljib1odq27zo4d"
+      },
+      {
+        name: "Keyboard Aula hero 60he",
+        image: "https://laz-img-sg.alicdn.com/p/dea2818a7572c569953de86fb8c3e49f.jpg"
+      },
+      {
+        name: "Kysona Mercury",
+        image: "https://down-th.img.susercontent.com/file/cn-11134207-7ras8-mdh5mqdqo5zda2"
+      }
+      ,
+      {
+        name: "ACER Nitro QG241Y",
+        image: "https://media-cdn.bnn.in.th/356023/acer-nitro-gq241y-s3bmiipx-1-square_medium.jpg"
+      }
     ]
   },
   {
     category: "Development",
-    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop&crop=center",
     items: [
-      "Visual Studio Code",
-      "Terminal with Oh My Zsh",
-      "Git & GitHub",
-      "Docker & Docker Compose",
-      "Postman for API testing",
-      "Figma for design"
+      {
+        name: "Visual Studio Code",
+        image: ""
+      },
+      {
+        name: "Terminal with Oh My Zsh",
+        image: ""
+      },
+      {
+        name: "Git & GitHub",
+        image: ""
+      },
+      {
+        name: "Docker",
+        image: ""
+      }
     ]
   },
   {
     category: "Software",
-    image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=300&fit=crop&crop=center",
     items: [
-      "Notion for notes and planning",
-      "Spotify for music",
-      "1Password for password management",
-      "CleanMyMac for system maintenance",
-      "Raycast for productivity"
+      {
+        name: "Notion",
+        image: ""
+      },
+      {
+        name: "Spotify",
+        image: ""
+      },
+      {
+        name: "1Password",
+        image: ""
+      },
+      {
+        name: "Raycast",
+        image: ""
+      }
     ]
   },
   {
     category: "Photography",
-    image: "https://images.unsplash.com/photo-1606983340126-99ab4feaa64a?w=400&h=300&fit=crop&crop=center",
     items: [
-      "Sony α7 III",
-      "FE 24-70mm f/2.8 GM",
-      "Adobe Lightroom",
-      "Peak Design Camera Strap",
-      "Manfrotto Tripod"
+      {
+        name: "IPhone 12 Pro Max",
+        image: "https://www.apple.com/newsroom/images/product/iphone/standard/Apple_announce-iphone12pro_10132020_big.jpg.large.jpg"
+      }
     ]
   }
 ]

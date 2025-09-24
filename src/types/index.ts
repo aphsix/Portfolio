@@ -37,6 +37,8 @@ export interface FeaturedProject {
 
 export interface UsesCategory {
   category: string
-  image?: string
-  items: string[]
+  items: {
+    name: string
+    image: string
+  }[]
 }

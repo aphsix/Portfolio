@@ -6,7 +6,7 @@ export const projects: Project[] = [
     id: '1',
     title: 'Enterprise Resource Planning',
     description: 'Enterprise Resource Planning (ERP) system for manufacturing military weapons planning and inventory management.',
-    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=720&h=400&fit=crop&crop=center',
+    image: 'public/images/IMG_2701.JPG',
     link: '',
     github: '',
     tags: ['React', 'Electron', 'CouchDB', 'Markdown'],
@@ -14,9 +14,9 @@ export const projects: Project[] = [
   },
   {
     id: '2',
-    title: 'E-Lerning Platform',
+    title: 'E-Learning Platform',
     description: 'E-learning platform for medical students to learn about radiology through interactive case studies and quizzes.',
-    image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=720&h=400&fit=crop&crop=center',
+    image: '/images/CSI00139.jpg',
     link: 'https://example.com',
     github: 'https://github.com',
     tags: ['iOS', 'Swift', 'Music API'],
@@ -26,8 +26,8 @@ export const projects: Project[] = [
     id: '3',
     title: 'CoSI Website',
     description: 'Website for the Center of Social Innovation (CoSI) Lab at a university, showcasing their projects and events.',
-    image: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=720&h=400&fit=crop&crop=center',
-    link: 'https://example.com',
+    image: 'public/images/CoSI web.png',
+    link: 'https://cosi.bu.ac.th/',
     tags: ['Deep Learning', 'AI Art', 'Python', 'TensorFlow'],
     category: 'collaborations'
   },
@@ -35,7 +35,7 @@ export const projects: Project[] = [
     id: '4',
     title: 'Tourism Website',
     description: 'A tourism website for a local travel agency, providing information about popular destinations, tours, and booking options.',
-    image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=720&h=400&fit=crop&crop=center',
+    image: '/images/CSI00139.jpg',
     link: 'https://example.com',
     tags: ['IoT', 'Home Automation', 'Mobile App'],
     category: 'collaborations'
@@ -52,15 +52,6 @@ export const projects: Project[] = [
     category: 'works'
   },
   // Collaborations
-  {
-    id: 'margelo',
-    title: 'Margelo',
-    description: 'A website of the elite app development and contracting agency based in Austria',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=720&h=400&fit=crop&crop=center',
-    link: 'https://margelo.io',
-    tags: ['Web Design', 'React', 'Agency'],
-    category: 'collaborations'
-  },
   
 
   // Old Works
