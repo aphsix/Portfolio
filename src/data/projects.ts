@@ -77,4 +77,30 @@ export const projects: Project[] = [
     ),
     category: 'collaborations'
   }
+  ,
+  {
+    id: '4',
+    title: createLocalizedText('Personal Portfolio Website', 'เว็บไซต์ผลงานส่วนตัว'),
+    description: createLocalizedText(
+      'A sleek and modern personal portfolio website to showcase projects, skills, and experience, built with React and Tailwind CSS.',
+      'เว็บไซต์ผลงานส่วนตัวที่ทันสมัยและทันสมัยเพื่อแสดงโครงการ ทักษะ และประสบการณ์ สร้างด้วย React และ Tailwind CSS'
+    ),
+    shortDescription: createLocalizedText(
+      'Personal portfolio website built with React and Tailwind CSS.',
+      'เว็บไซต์ผลงานส่วนตัวสร้างด้วย React และ Tailwind CSS.'
+    ),
+    descriptionLong: createLocalizedText(
+      'A personal portfolio website designed to showcase my projects, skills, and professional experience. The site features a clean, modern design with sections for about me, project showcases, skills, and contact information. Built using React for a dynamic user experience and Tailwind CSS for rapid styling and responsiveness.',
+      'เว็บไซต์ผลงานส่วนตัวที่ออกแบบมาเพื่อแสดงโครงการ ทักษะ และประสบการณ์ทางวิชาชีพของฉัน เว็บไซต์มีการออกแบบที่สะอาดตาและทันสมัย พร้อมส่วนต่างๆ สำหรับเกี่ยวกับฉัน การแสดงผลงาน ทักษะ และข้อมูลการติดต่อ สร้างขึ้นโดยใช้ React เพื่อประสบการณ์ผู้ใช้ที่มีไดนามิกและ Tailwind CSS สำหรับการจัดแต่งสไตล์อย่างรวดเร็วและการตอบสนอง'
+    ),
+    image: '/images/portfolio.png',
+    images: ['/images/portfolio.png'],
+    link: 'https://example.com',
+    github: 'https://github.com',
+    tags: createLocalizedText(
+      ['React', 'Tailwind CSS', 'JavaScript', 'Responsive Design', 'Web Development'],
+      ['React', 'Tailwind CSS', 'JavaScript', 'การออกแบบตอบสนอง', 'การพัฒนาเว็บ']
+    ),
+    category: 'works'
+  }
 ]

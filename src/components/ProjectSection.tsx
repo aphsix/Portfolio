@@ -47,7 +47,7 @@ const WorkSection = ({ title, projects, showDivider = false }: WorkSectionProps)
             >
               <Link
                 to={`/projects/${project.id}`}
-                className="flex-1 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 rounded-xl p-4 sm:p-6 transition-colors duration-300"
+                className="flex-1 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 rounded-xl p-4 sm:p-6 transition-colors duration-300 "
               >
                 <div className="flex-shrink-0 w-full sm:w-48 h-48 sm:h-32 relative overflow-hidden rounded-lg">
                   <img
@@ -59,7 +59,7 @@ const WorkSection = ({ title, projects, showDivider = false }: WorkSectionProps)
                 </div>
 
                 <div className="flex-1 text-left w-full">
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-slate-100 mb-1">
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-slate-100 mb-1 ">
                     {getLocalized(project.title)}
                   </h3>
                   <p className="text-gray-600 dark:text-slate-300 text-sm leading-relaxed mb-2">
