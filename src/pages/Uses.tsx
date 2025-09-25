@@ -43,7 +43,7 @@ const Uses = () => {
                 </h2>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {section.items.map((item, itemIndex) => (
                   <motion.div
                     key={itemIndex}
@@ -53,45 +53,46 @@ const Uses = () => {
                       delay: sectionIndex * 0.1 + itemIndex * 0.05,
                       duration: 0.4,
                     }}
-                    className="group relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-700"
+                    className="group relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 dark:border-gray-700"
                   >
-                    {/* Full Image Background */}
-                    <div className="relative aspect-[4/3] overflow-hidden">
-                      {item.image ? (
-                        <>
+                    <div className="flex items-center p-4 gap-4">
+                      {/* Image Section */}
+                      <div className="flex-shrink-0 w-16 h-16 relative overflow-hidden rounded-lg">
+                        {item.image ? (
                           <img
                             src={item.image}
                             alt={item.name}
-                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                             onError={(e) => {
                               e.currentTarget.src = defaultImage;
                             }}
                           />
-                          {/* Gradient Overlay */}
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                          {/* Content Overlay */}
-                          <div className="absolute bottom-0 left-0 right-0 p-4">
-                            <h3 className="text-white font-semibold text-lg drop-shadow-lg">
-                              {item.name}
-                            </h3>
-                          </div>
-                        </>
-                      ) : (
-                        <div className="w-full h-full bg-gradient-to-br from-teal-500/20 to-cyan-500/20 dark:from-teal-600/30 dark:to-cyan-600/30 flex flex-col items-center justify-center">
-                          <div className="w-16 h-16 bg-teal-500/20 dark:bg-teal-400/30 rounded-full flex items-center justify-center mb-3">
-                            <span className="text-2xl font-bold text-teal-600 dark:text-teal-400">
+                        ) : (
+                          <div className="w-full h-full bg-gradient-to-br from-teal-500/20 to-cyan-500/20 dark:from-teal-600/30 dark:to-cyan-600/30 flex items-center justify-center rounded-lg">
+                            <span className="text-xl font-bold text-teal-600 dark:text-teal-400">
                               {item.name.charAt(0)}
                             </span>
                           </div>
-                          <h3 className="text-gray-700 dark:text-gray-300 font-semibold text-center px-2">
-                            {item.name}
-                          </h3>
-                        </div>
-                      )}
+                        )}
+                      </div>
 
-                      {/* Hover Border Effect */}
-                      <div className="absolute inset-0 border-2 border-transparent group-hover:border-teal-400/50 rounded-xl transition-all duration-300" />
+                      {/* Text Section */}
+                      <div className="flex-1">
+                        <h3 className="text-gray-900 dark:text-gray-100 font-semibold text-lg group-hover:text-teal-500 transition-colors">
+                          {item.name}
+                        </h3>
+                      </div>
+
+                      {/* Hover Arrow */}
+                      <div className="flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <svg className="w-5 h-5 text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </div>
                     </div>
+
+                    {/* Hover Border Effect */}
+                    <div className="absolute inset-0 border-2 border-transparent group-hover:border-teal-400/20 rounded-xl transition-all duration-300" />
                   </motion.div>
                 ))}
               </div>

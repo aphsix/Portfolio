@@ -4,6 +4,7 @@ import { MdOutlineWork } from "react-icons/md";
 import { MdViewTimeline } from "react-icons/md";
 import { MdElectricBolt } from "react-icons/md";
 import { PiGlobeBold } from "react-icons/pi";
+import { MdEmail } from "react-icons/md";
 import { useState, useEffect } from "react";
 import {
   bioTimeline,
@@ -15,7 +16,7 @@ import { socialLinks } from "../data/socialData";
 import { useLanguage } from '../contexts/LanguageContext';
 
 const Home = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [typewriterText, setTypewriterText] = useState("");
   const [emailContent, setEmailContent] = useState("");
   const targetText = t('home.greeting');
@@ -125,7 +126,7 @@ const Home = () => {
 
             <div className="text-center">
               <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-1">
-{t('home.name')}
+                {language === 'th' && personalInfo.nameTh ? personalInfo.nameTh : personalInfo.name}
               </h2>
               <p className="text-sm text-gray-500 dark:text-gray-400">
 {t('home.title')}
@@ -144,17 +145,11 @@ const Home = () => {
           <div className="flex items-center gap-3 mb-4">
             <MdOutlineWork className="text-lg" />
             <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">
-              Work
+              {t('home.work')}
             </h3>
           </div>
           <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 text-sm">
-            I'm a Full-Stack web developer currently at the Center of Specialty
-            Innovation (CoSI), a research lab under Bangkok University.
-            experience as a full-stack developer, I have worked on various
-            projects, including ERP( Enterprise Resource Planning) platforms and
-            task management applications. My expertise lies in JavaScript,
-            TypeScript,React and Node.js, and I am passionate about building
-            efficient and scalable web applications.
+            {t('home.work.description')}
           </p>
           <div className="text-center">
             <motion.button
@@ -162,7 +157,7 @@ const Home = () => {
               whileTap={{ scale: 0.95 }}
               className="inline-flex items-center gap-2 bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-md text-sm transition-colors"
             >
-              My Portfolio
+{t('home.portfolio')}
               <HiArrowRight size={14} />
             </motion.button>
           </div>
@@ -178,7 +173,7 @@ const Home = () => {
           <div className="flex items-center gap-3 mb-4">
             <MdViewTimeline className="text-lg" />
             <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">
-              Bio
+              {t('home.bio')}
             </h3>
           </div>
           <div className="space-y-2">
@@ -188,7 +183,7 @@ const Home = () => {
                   {item.year}
                 </span>
                 <span className="text-gray-600 dark:text-gray-300 text-sm">
-                  {item.event}
+                  {language === 'th' && item.eventTh ? item.eventTh : item.event}
                 </span>
               </div>
             ))}
@@ -205,7 +200,7 @@ const Home = () => {
           <div className="flex items-center gap-3 mb-4">
             <MdElectricBolt className="text-lg" />
             <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">
-              Skills
+              {t('home.skills')}
             </h3>
           </div>
 
@@ -310,7 +305,7 @@ const Home = () => {
           <div className="flex items-center gap-3 mb-4">
             <PiGlobeBold className="text-lg" />
             <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">
-              On the web
+              {t('home.web')}
             </h3>
           </div>
           <div className="space-y-2">
@@ -343,19 +338,20 @@ const Home = () => {
           className="mb-10"
         >
           <div className="flex items-center gap-3 mb-4">
-            <div className="text-lg">📧</div>
+            
+            <div className="text-lg"><MdEmail/></div>
             <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">
-              Contact Email
+              {t('home.contact.email')}
             </h3>
           </div>
           <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
-            Contact me for work opportunities or project collaborations
+            {t('home.contact.description')}
           </p>
           <div className="space-y-3">
             <textarea
               value={emailContent}
               onChange={(e) => setEmailContent(e.target.value)}
-              placeholder="Describe what you're looking for or your project details..."
+              placeholder={t('home.contact.placeholder')}
               className="w-full px-3 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-sm text-gray-900 dark:text-gray-100 placeholder-gray-500 focus:outline-none focus:border-teal-500 resize-none"
               rows={4}
             />
@@ -363,7 +359,7 @@ const Home = () => {
               onClick={handleEmailContact}
               className="w-full px-4 py-2 bg-teal-500 hover:bg-teal-600 text-white rounded-md text-sm transition-colors"
             >
-              Contact via Email
+{t('home.contact.button')}
             </button>
           </div>
         </motion.section>
@@ -396,10 +392,10 @@ const Home = () => {
                 </div>
                 <div className="p-3">
                   <h4 className="font-semibold text-sm text-gray-900 dark:text-gray-100 group-hover:text-teal-500 transition-colors">
-                    {project.title}
+                    {language === 'th' && project.titleTh ? project.titleTh : project.title}
                   </h4>
                   <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                    {project.description}
+                    {language === 'th' && project.descriptionTh ? project.descriptionTh : project.description}
                   </p>
                 </div>
               </motion.a>

@@ -1,19 +1,25 @@
 export interface Project {
   id: string
   title: string
+  titleTh?: string
   description: string
+  descriptionTh?: string
   shortDescription?: string
+  shortDescriptionTh?: string
   descriptionLong?: string
+  descriptionLongTh?: string
   image: string
   link?: string
   github?: string
   tags: string[]
+  tagsTh?: string[]
   category: 'works' | 'collaborations' | 'old'
 }
 
 export interface BioTimelineItem {
   year: string
   event: string
+  eventTh?: string
 }
 
 export interface Skill {
@@ -31,15 +37,19 @@ export interface SocialLink {
 
 export interface FeaturedProject {
   title: string
+  titleTh?: string
   description: string
+  descriptionTh?: string
   image: string
   link: string
 }
 
 export interface UsesCategory {
   category: string
+  categoryTh?: string
   items: {
     name: string
+    nameTh?: string
     image: string
   }[]
 }

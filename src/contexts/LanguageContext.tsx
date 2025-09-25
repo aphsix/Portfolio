@@ -28,6 +28,15 @@ const translations = {
     'home.contact': 'Get in Touch',
     'home.bio.title': 'About Me',
     'home.featured': 'Featured Projects',
+    'home.work': 'Work',
+    'home.work.description': 'I\'m a Full-Stack web developer currently at the Center of Specialty Innovation (CoSI), a research lab under Bangkok University. With experience as a full-stack developer, I have worked on various projects, including ERP (Enterprise Resource Planning) platforms and task management applications. My expertise lies in JavaScript, TypeScript, React and Node.js, and I am passionate about building efficient and scalable web applications.',
+    'home.portfolio': 'My Portfolio',
+    'home.bio': 'Bio',
+    'home.web': 'On the web',
+    'home.contact.email': 'Contact Email',
+    'home.contact.description': 'Contact me for work opportunities or project collaborations',
+    'home.contact.placeholder': 'Describe what you\'re looking for or your project details...',
+    'home.contact.button': 'Contact via Email',
 
     // Projects Page
     'projects.title': 'Projects',
@@ -84,6 +93,15 @@ const translations = {
     'home.contact': 'ติดต่อผม',
     'home.bio.title': 'เกี่ยวกับผม',
     'home.featured': 'ผลงานเด่น',
+    'home.work': 'งาน',
+    'home.work.description': 'ผมเป็นนักพัฒนาเว็บ Full-Stack ที่ทำงานอยู่ที่ศูนย์นวัตกรรมเฉพาะทาง (CoSI) ซึ่งเป็นห้องปฏิบัติการวิจัยภายใต้มหาวิทยาลัยกรุงเทพ ด้วยประสบการณ์ในการเป็นนักพัฒนา full-stack ผมได้ทำงานกับโปรเจคต่างๆ รวมถึงแพลตฟอร์ม ERP (Enterprise Resource Planning) และแอปพลิเคชันการจัดการงาน ความเชี่ยวชาญของผมอยู่ที่ JavaScript, TypeScript, React และ Node.js และผมมีความหลงใหลในการสร้างเว็บแอปพลิเคชันที่มีประสิทธิภาพและขยายได้',
+    'home.portfolio': 'ผลงานของผม',
+    'home.bio': 'ประวัติ',
+    'home.web': 'บนเว็บ',
+    'home.contact.email': 'อีเมลติดต่อ',
+    'home.contact.description': 'ติดต่อผมสำหรับโอกาสในการทำงานหรือความร่วมมือในโปรเจค',
+    'home.contact.placeholder': 'บอกรายละเอียดสิ่งที่คุณกำลังมองหาหรือรายละเอียดโปรเจคของคุณ...',
+    'home.contact.button': 'ติดต่อผ่านอีเมล',
 
     // Projects Page
     'projects.title': 'โปรเจค',
