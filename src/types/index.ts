@@ -1,6 +1,6 @@
 export interface LocalizedText {
-  en: string
-  th?: string
+  en: string | string[]
+  th?: string | string[]
 }
 
 export interface Project {

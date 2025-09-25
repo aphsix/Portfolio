@@ -4,9 +4,11 @@ import { MdOutlineWork } from 'react-icons/md'
 import { Section } from '../ui'
 import { projects } from '../../data'
 import { useLanguage } from '../../contexts'
+import { useLocalizedData } from '../../hooks'
 
 const FeaturedProjectsSection = () => {
-  const { t, language } = useLanguage()
+  const { t } = useLanguage()
+  const { getLocalized, getLocalizedArray } = useLocalizedData()
 
   const featuredProjects = projects
     .filter((p) => p.category === 'collaborations')
@@ -35,11 +37,7 @@ const FeaturedProjectsSection = () => {
               <div className="w-full h-40 relative overflow-hidden">
                 <img
                   src={project.image}
-                  alt={
-                    language === 'th' && project.titleTh
-                      ? project.titleTh
-                      : project.title
-                  }
+                  alt={getLocalized(project.title)}
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                   loading="lazy"
                 />
@@ -49,20 +47,13 @@ const FeaturedProjectsSection = () => {
               {/* Project Content */}
               <div className="flex-1 text-left p-4">
                 <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-teal-500 transition-colors">
-                  {language === 'th' && project.titleTh
-                    ? project.titleTh
-                    : project.title}
+                  {getLocalized(project.title)}
                 </h4>
                 <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-3">
-                  {language === 'th' && project.shortDescriptionTh
-                    ? project.shortDescriptionTh
-                    : project.shortDescription || project.description}
+                  {getLocalized(project.shortDescription || project.description)}
                 </p>
                 <div className="flex flex-wrap gap-1">
-                  {(language === 'th' && project.tagsTh
-                    ? project.tagsTh
-                    : project.tags
-                  )
+                  {getLocalizedArray(project.tags)
                     .slice(0, 3)
                     .map((tag, tagIndex) => (
                       <span

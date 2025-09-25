@@ -5,10 +5,12 @@ import { FiGithub } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { projects } from "../data";
 import { useLanguage } from '../contexts';
+import { useLocalizedData } from '../hooks';
 
 const ProjectDetail = () => {
   const { projectId } = useParams();
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
+  const { getLocalized, getLocalizedArray } = useLocalizedData();
   const project = projects.find((p) => p.id === projectId);
 
   if (!project) {
@@ -42,10 +44,10 @@ const ProjectDetail = () => {
           className="mb-10"
         >
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6">
-            {language === 'th' && project.titleTh ? project.titleTh : project.title}
+            {getLocalized(project.title)}
           </h1>
           <p className="text-gray-600 dark:text-gray-400 text-lg leading-relaxed">
-            {language === 'th' && project.descriptionTh ? project.descriptionTh : project.description}
+            {getLocalized(project.description)}
           </p>
         </motion.div>
 
@@ -59,7 +61,7 @@ const ProjectDetail = () => {
           <div className="aspect-video rounded-lg overflow-hidden bg-white dark:bg-gray-800">
             <img
               src={project.image}
-              alt={language === 'th' && project.titleTh ? project.titleTh : project.title}
+              alt={getLocalized(project.title)}
               className="w-full h-full object-cover"
             />
           </div>
@@ -73,13 +75,13 @@ const ProjectDetail = () => {
           className="mb-10"
         >
           {/* Tags */}
-          {((language === 'th' && project.tagsTh) ? project.tagsTh : project.tags) && ((language === 'th' && project.tagsTh) ? project.tagsTh : project.tags).length > 0 && (
+          {getLocalizedArray(project.tags).length > 0 && (
             <div className="mb-8">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
                 {t('project.technologies')}
               </h3>
               <div className="flex flex-wrap gap-2">
-                {((language === 'th' && project.tagsTh) ? project.tagsTh : project.tags).map((tag) => (
+                {getLocalizedArray(project.tags).map((tag) => (
                   <span
                     key={tag}
                     className="px-3 py-1 text-sm bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 rounded-md"
@@ -146,7 +148,7 @@ const ProjectDetail = () => {
           </h3>
           <div className="prose prose-gray dark:prose-invert max-w-none">
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-base">
-              {language === 'th' && project.descriptionLongTh ? project.descriptionLongTh : (project.descriptionLong || (language === 'th' && project.descriptionTh ? project.descriptionTh : project.description))}
+              {getLocalized(project.descriptionLong || project.description)}
             </p>
           </div>
         </motion.div>
@@ -170,7 +172,7 @@ const ProjectDetail = () => {
                 >
                   <img
                     src={image}
-                    alt={`${language === 'th' && project.titleTh ? project.titleTh : project.title} - Image ${index + 1}`}
+                    alt={`${getLocalized(project.title)} - Image ${index + 1}`}
                     className="w-full h-full object-cover"
                     loading="lazy"
                   />

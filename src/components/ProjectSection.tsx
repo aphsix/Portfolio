@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Project } from '../types'
+import { useLocalizedData } from '../hooks'
 
 interface WorkSectionProps {
   title: string
@@ -9,7 +10,7 @@ interface WorkSectionProps {
 }
 
 const WorkSection = ({ title, projects, showDivider = false }: WorkSectionProps) => {
-
+  const { getLocalized, getLocalizedArray } = useLocalizedData()
   // กำหนด default image
   const defaultImage = '/images/CSI00138.jpg'
 
@@ -51,7 +52,7 @@ const WorkSection = ({ title, projects, showDivider = false }: WorkSectionProps)
                 <div className="flex-shrink-0 w-full sm:w-48 h-48 sm:h-32 relative overflow-hidden rounded-lg">
                   <img
                     src={project.image || defaultImage}
-                    alt={project.title}
+                    alt={getLocalized(project.title)}
                     className="w-full h-full object-cover"
                     loading="lazy"
                   />
@@ -59,13 +60,13 @@ const WorkSection = ({ title, projects, showDivider = false }: WorkSectionProps)
 
                 <div className="flex-1 text-left w-full">
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-slate-100 mb-1">
-                    {project.title}
+                    {getLocalized(project.title)}
                   </h3>
                   <p className="text-gray-600 dark:text-slate-300 text-sm leading-relaxed mb-2">
-                    {project.shortDescription || project.description}
+                    {getLocalized(project.shortDescription || project.description)}
                   </p>
                   <div className="flex flex-wrap gap-2">
-                    {project.tags.slice(0, 3).map((tag, tagIndex) => (
+                    {getLocalizedArray(project.tags).slice(0, 3).map((tag, tagIndex) => (
                       <span
                         key={tagIndex}
                         className="px-2 py-1 bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 text-xs rounded-full"
@@ -73,9 +74,9 @@ const WorkSection = ({ title, projects, showDivider = false }: WorkSectionProps)
                         {tag}
                       </span>
                     ))}
-                    {project.tags.length > 3 && (
+                    {getLocalizedArray(project.tags).length > 3 && (
                       <span className="px-2 py-1 bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-slate-300 text-xs rounded-full">
-                        +{project.tags.length - 3} more
+                        +{getLocalizedArray(project.tags).length - 3} more
                       </span>
                     )}
                   </div>

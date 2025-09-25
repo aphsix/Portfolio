@@ -2,9 +2,11 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { personalInfo } from '../../data'
 import { useLanguage } from '../../contexts'
+import { useLocalizedData } from '../../hooks'
 
 const HeroSection = () => {
-  const { t, language } = useLanguage()
+  const { t } = useLanguage()
+  const { getLocalized } = useLocalizedData()
   const [typewriterText, setTypewriterText] = useState('')
   const targetText = t('home.greeting')
 
@@ -90,9 +92,7 @@ const HeroSection = () => {
 
         <div className="text-center">
           <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-1">
-            {language === 'th' && personalInfo.nameTh
-              ? personalInfo.nameTh
-              : personalInfo.name}
+            {getLocalized(personalInfo.name)}
           </h2>
           <p className="text-sm text-gray-500 dark:text-gray-400">
             {t('home.title')}

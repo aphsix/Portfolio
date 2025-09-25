@@ -7,7 +7,8 @@
       "Bash(npm install:*)",
       "mcp__ide__getDiagnostics",
       "WebFetch(domain:catfdog.dev)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Bash(pkill:*)"
     ],
     "deny": [],
     "ask": []
