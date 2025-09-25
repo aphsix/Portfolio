@@ -45,22 +45,22 @@ const WorkSection = ({ title, projects, showDivider = false }: WorkSectionProps)
         variants={containerVariants}
         className="mb-10"
       >
-        <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-6">
+        <h3 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-6">
           {title}
         </h3>
 
-        <div className="space-y-12">
+        <div className="space-y-6 sm:space-y-12">
           {projects.map((project, index) => (
             <motion.article
               key={project.id}
               variants={itemVariants}
-              className={`flex ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'} gap-8 group`}
+              className={`flex flex-col sm:flex-row ${index % 2 === 0 ? 'sm:flex-row' : 'sm:flex-row-reverse'} gap-4 sm:gap-8 group`}
             >
               <Link
                 to={`/projects/${project.id}`}
-                className="flex-1 flex items-center gap-8 group-hover:bg-gray-50 dark:group-hover:bg-gray-800/50 rounded-xl p-6 transition-colors duration-300"
+                className="flex-1 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 group-hover:bg-gray-50 dark:group-hover:bg-slate-800/50 rounded-xl p-4 sm:p-6 transition-colors duration-300"
               >
-                <div className="flex-shrink-0 w-48 h-32 relative overflow-hidden rounded-lg">
+                <div className="flex-shrink-0 w-full sm:w-48 h-48 sm:h-32 relative overflow-hidden rounded-lg">
                   <img
                     src={project.image || defaultImage}
                     alt={project.title}
@@ -70,24 +70,24 @@ const WorkSection = ({ title, projects, showDivider = false }: WorkSectionProps)
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
 
-                <div className="flex-1 text-left">
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3 group-hover:text-teal-500 transition-colors">
+                <div className="flex-1 text-left w-full">
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-slate-100 mb-1 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-colors">
                     {project.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4">
+                  <p className="text-gray-600 dark:text-slate-300 text-sm leading-relaxed mb-2">
                     {project.shortDescription || project.description}
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {project.tags.slice(0, 3).map((tag, tagIndex) => (
                       <span
                         key={tagIndex}
-                        className="px-2 py-1 bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 text-xs rounded-full"
+                        className="px-2 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 text-xs rounded-full"
                       >
                         {tag}
                       </span>
                     ))}
                     {project.tags.length > 3 && (
-                      <span className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 text-xs rounded-full">
+                      <span className="px-2 py-1 bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-slate-300 text-xs rounded-full">
                         +{project.tags.length - 3} more
                       </span>
                     )}

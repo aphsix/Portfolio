@@ -10,8 +10,8 @@ const Projects = () => {
   const oldProjects = projects.filter(project => project.category === 'old')
 
   return (
-    <div className="min-h-screen pt-20 bg-gray-50 dark:bg-gray-900">
-      <div className="max-w-2xl mx-auto px-6">
+    <div className="min-h-screen pt-20 bg-gray-50 dark:bg-slate-900">
+      <div className="max-w-2xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -19,10 +19,10 @@ const Projects = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-8"
         >
-          <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-3">
+          <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-slate-100 mb-3">
             {t('projects.title')}
           </h1>
-          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          <p className="text-gray-600 dark:text-slate-300 max-w-2xl mx-auto">
             {t('projects.subtitle')}
           </p>
         </motion.div>

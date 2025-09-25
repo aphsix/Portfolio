@@ -8,7 +8,7 @@ export const projects: Project[] = [
     titleTh: 'ระบบการวางแผนทรัพยากรองค์กร',
     description: 'A comprehensive ERP system designed for military manufacturing operations, featuring advanced inventory management and production planning capabilities.',
     descriptionTh: 'ระบบ ERP ที่ครอบคลุมที่ออกแบบสำหรับการดำเนินงานการผลิตทางทหาร มีการจัดการสินค้าคงคลังขั้นสูงและความสามารถในการวางแผนการผลิต',
-    shortDescription: 'Enterprise Resource Planning system for military manufacturing with inventory management and production planning.',
+    shortDescription: 'Planning system for military manufacturing with inventory management and production planning.',
     shortDescriptionTh: 'ระบบ ERP สำหรับการผลิตทางทหารพร้อมการจัดการสินค้าคงคลัง',
     descriptionLong: 'Developed a sophisticated Enterprise Resource Planning system tailored for military manufacturing operations. The system integrates inventory management, production scheduling, and resource allocation using modern web technologies. Built with React for responsive UI, Electron for cross-platform desktop deployment, and CouchDB for robust data synchronization across multiple locations.',
     descriptionLongTh: 'พัฒนาระบบการวางแผนทรัพยากรองค์กรที่ซับซ้อนซึ่งปรับแต่งสำหรับการดำเนินงานการผลิตทางทหาร ระบบนี้รวมการจัดการสินค้าคงคลัง การจัดตารางการผลิต และการจัดสรรทรัพยากรโดยใช้เทคโนโลยีเว็บสมัยใหม่ สร้างด้วย React สำหรับ UI ที่ตอบสนอง Electron สำหรับการใช้งานบนเดสก์ท็อปข้ามแพลตฟอร์ม และ CouchDB สำหรับการซิงค์ข้อมูลที่แข็งแกร่งในหลายสถานที่',

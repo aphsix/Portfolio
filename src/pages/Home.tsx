@@ -9,11 +9,12 @@ import { useState, useEffect } from "react";
 import {
   bioTimeline,
   personalInfo,
-  featuredProjects,
 } from "../data/personalData";
+import { projects } from "../data/projects";
 import { skills } from "../data/skillsData";
 import { socialLinks } from "../data/socialData";
 import { useLanguage } from '../contexts/LanguageContext';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const { t, language } = useLanguage();
@@ -371,34 +372,55 @@ const Home = () => {
           transition={{ delay: 0.9, duration: 0.6 }}
           className="mb-10"
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {featuredProjects.map((project, index) => (
-              <motion.a
-                key={project.title}
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
+          <div className="flex items-center gap-3 mb-6">
+            <MdOutlineWork className="text-lg" />
+            <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">
+              {t('home.featured')}
+            </h3>
+          </div>
+          <div className="space-y-6">
+            {projects.filter(p => p.category === 'works').slice(0, 2).map((project, index) => (
+              <motion.article
+                key={project.id}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 1.0 + index * 0.1 }}
-                className="group block bg-white dark:bg-gray-800 rounded-md overflow-hidden hover:scale-105 transition-transform shadow-md"
+                className={`flex ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'} gap-6 group`}
               >
-                <div className="aspect-video relative overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
-                </div>
-                <div className="p-3">
-                  <h4 className="font-semibold text-sm text-gray-900 dark:text-gray-100 group-hover:text-teal-500 transition-colors">
-                    {language === 'th' && project.titleTh ? project.titleTh : project.title}
-                  </h4>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                    {language === 'th' && project.descriptionTh ? project.descriptionTh : project.description}
-                  </p>
-                </div>
-              </motion.a>
+                <Link
+                  to={`/projects/${project.id}`}
+                  className="flex-1 flex items-center gap-6 group-hover:bg-gray-50 dark:group-hover:bg-gray-800/50 rounded-xl p-4 transition-colors duration-300"
+                >
+                  <div className="flex-shrink-0 w-32 h-24 relative overflow-hidden rounded-lg">
+                    <img
+                      src={project.image}
+                      alt={language === 'th' && project.titleTh ? project.titleTh : project.title}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+
+                  <div className="flex-1 text-left">
+                    <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-teal-500 transition-colors">
+                      {language === 'th' && project.titleTh ? project.titleTh : project.title}
+                    </h4>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-3">
+                      {language === 'th' && project.shortDescriptionTh ? project.shortDescriptionTh : (project.shortDescription || project.description)}
+                    </p>
+                    <div className="flex flex-wrap gap-1">
+                      {(language === 'th' && project.tagsTh ? project.tagsTh : project.tags).slice(0, 3).map((tag, tagIndex) => (
+                        <span
+                          key={tagIndex}
+                          className="px-2 py-1 bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 text-xs rounded-full"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </Link>
+              </motion.article>
             ))}
           </div>
         </motion.section>
