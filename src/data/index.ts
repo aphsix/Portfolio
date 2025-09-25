@@ -1,14 +1,14 @@
-// Project data
-export * from './projects'
+// Personal Information
+export * from './personal'
 
-// Personal data
-export * from './personalData'
+// Projects
+export { projects } from './projects'
 
-// Skills data
-export * from './skillsData'
+// Skills
+export { skills } from './skillsData'
 
-// Social links
-export * from './socialData'
+// Social Links
+export { socialLinks } from './socialData'
 
-// Uses data
-export * from './usesData'
+// Uses/Tools
+export { usesData } from './usesData'

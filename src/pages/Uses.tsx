@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { usesData } from "../data/usesData";
-import { useLanguage } from '../contexts/LanguageContext';
+import { usesData } from "../data";
+import { useLanguage } from '../contexts';
 
 
 

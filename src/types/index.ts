@@ -1,56 +1,63 @@
+export interface LocalizedText {
+  en: string
+  th?: string
+}
+
 export interface Project {
   id: string
-  title: string
-  titleTh?: string
-  description: string
-  descriptionTh?: string
-  shortDescription?: string
-  shortDescriptionTh?: string
-  descriptionLong?: string
-  descriptionLongTh?: string
+  title: LocalizedText
+  description: LocalizedText
+  shortDescription?: LocalizedText
+  descriptionLong?: LocalizedText
   image: string
   images?: string[]
   link?: string
   github?: string
-  tags: string[]
-  tagsTh?: string[]
-  category: 'works' | 'collaborations' | 'old'
+  tags: LocalizedText
+  category: ProjectCategory
+  featured?: boolean
 }
+
+export type ProjectCategory = 'works' | 'collaborations' | 'old'
 
 export interface BioTimelineItem {
   year: string
-  event: string
-  eventTh?: string
+  event: LocalizedText
 }
 
 export interface Skill {
   name: string
   color: string
-  icon?: any
+  icon?: React.ComponentType<{ size?: number }>
+  category?: string
 }
 
 export interface SocialLink {
   name: string
-  icon: any
+  icon: React.ComponentType<{ size?: number }>
   url: string
   handle: string
+  description?: string
 }
 
-export interface FeaturedProject {
-  title: string
-  titleTh?: string
-  description: string
-  descriptionTh?: string
+export interface PersonalInfo {
+  name: LocalizedText
+  title: LocalizedText
+  greeting: LocalizedText
+  profileImage: string
+  email: string
+  phone?: string
+  location?: LocalizedText
+}
+
+export interface UsesTool {
+  name: LocalizedText
   image: string
-  link: string
+  description?: LocalizedText
+  url?: string
 }
 
 export interface UsesCategory {
-  category: string
-  categoryTh?: string
-  items: {
-    name: string
-    nameTh?: string
-    image: string
-  }[]
+  category: LocalizedText
+  items: UsesTool[]
 }

@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { ThemeProvider } from './contexts/ThemeContext'
-import { LanguageProvider } from './contexts/LanguageContext'
+import { ThemeProvider, LanguageProvider } from './contexts'
 import ErrorBoundary from './components/ErrorBoundary'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'

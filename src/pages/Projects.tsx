@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import ProjectSection from '../components/ProjectSection'
-import { projects } from '../data/projects'
-import { useLanguage } from '../contexts/LanguageContext'
+import { projects } from '../data'
+import { useLanguage } from '../contexts'
 
 const Projects = () => {
   const { t } = useLanguage()

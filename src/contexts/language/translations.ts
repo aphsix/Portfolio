@@ -1,16 +1,4 @@
-import { createContext, useContext, useState, ReactNode } from 'react'
-
-type Language = 'en' | 'th'
-
-interface LanguageContextType {
-  language: Language
-  setLanguage: (language: Language) => void
-  t: (key: string) => string
-}
-
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
-
-const translations = {
+export const translations = {
   en: {
     // Navigation
     'nav.projects': 'Projects',
@@ -55,6 +43,7 @@ const translations = {
     'project.about': 'About this project',
     'project.features': 'Key Features',
     'project.process': 'Development Process',
+    'project.gallery': 'Gallery',
     'project.category.works': 'Personal Project',
     'project.category.collaborations': 'Collaboration',
     'project.category.old': 'Archive Project',
@@ -120,6 +109,7 @@ const translations = {
     'project.about': 'เกี่ยวกับโปรเจคนี้',
     'project.features': 'ฟีเจอร์หลัก',
     'project.process': 'กระบวนการพัฒนา',
+    'project.gallery': 'แกลเลอรี',
     'project.category.works': 'โปรเจคส่วนตัว',
     'project.category.collaborations': 'งานร่วมมือ',
     'project.category.old': 'โปรเจคเก่า',
@@ -141,44 +131,6 @@ const translations = {
     'common.error': 'เกิดข้อผิดพลาด',
     'common.retry': 'ลองใหม่',
   }
-}
+} as const
 
-export const useLanguage = (): LanguageContextType => {
-  const context = useContext(LanguageContext)
-  if (!context) {
-    throw new Error('useLanguage must be used within a LanguageProvider')
-  }
-  return context
-}
-
-interface LanguageProviderProps {
-  children: ReactNode
-}
-
-export const LanguageProvider = ({ children }: LanguageProviderProps) => {
-  const [language, setLanguage] = useState<Language>(() => {
-    // Try to get language from localStorage
-    const savedLanguage = localStorage.getItem('preferred-language') as Language
-    return savedLanguage || 'en'
-  })
-
-  const handleSetLanguage = (newLanguage: Language) => {
-    setLanguage(newLanguage)
-    localStorage.setItem('preferred-language', newLanguage)
-  }
-
-  const t = (key: string): string => {
-    const translation = translations[language][key as keyof typeof translations[typeof language]]
-    if (!translation) {
-      console.warn(`Translation missing for key: ${key}`)
-      return key
-    }
-    return translation
-  }
-
-  return (
-    <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage, t }}>
-      {children}
-    </LanguageContext.Provider>
-  )
-}
+export type TranslationKey = keyof typeof translations.en
