@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
 import { usesData } from "../data";
 import { useLanguage } from '../contexts';
+import { getLocalizedText } from '../utils';
 
 
 
 const Uses = () => {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
   const defaultImage = '/images/CSI00139.jpg'
   return (
     <div
@@ -33,7 +34,7 @@ const Uses = () => {
         <div className="space-y-8">
           {usesData.map((section, sectionIndex) => (
             <motion.section
-              key={section.category}
+              key={getLocalizedText(section.category, language) as string}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 + sectionIndex * 0.1, duration: 0.6 }}
@@ -41,7 +42,7 @@ const Uses = () => {
             >
               <div className="flex items-center gap-3 mb-6">
                 <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100">
-                  {section.category}
+                  {getLocalizedText(section.category, language)}
                 </h2>
               </div>
 
@@ -61,7 +62,7 @@ const Uses = () => {
                       {item.image ? (
                         <img
                           src={item.image}
-                          alt={item.name}
+                          alt={getLocalizedText(item.name, language) as string}
                           className="w-full h-full object-cover"
                           onError={(e) => {
                             e.currentTarget.src = defaultImage;
@@ -70,13 +71,13 @@ const Uses = () => {
                       ) : (
                         <div className="w-full h-full bg-gradient-to-br from-teal-500/20 to-cyan-500/20 dark:from-teal-600/30 dark:to-cyan-600/30 flex items-center justify-center rounded-lg">
                           <span className="text-lg font-bold text-teal-600 dark:text-teal-400">
-                            {item.name.charAt(0)}
+                            {(getLocalizedText(item.name, language) as string).charAt(0)}
                           </span>
                         </div>
                       )}
                     </div>
                     <h3 className="text-gray-900 dark:text-gray-100 font-medium">
-                      {item.name}
+                      {getLocalizedText(item.name, language)}
                     </h3>
                   </motion.div>
                 ))}
