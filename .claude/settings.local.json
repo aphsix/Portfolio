@@ -9,7 +9,12 @@
       "WebFetch(domain:catfdog.dev)",
       "Bash(find:*)",
       "Bash(pkill:*)",
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "Bash(npm run server:*)",
+      "Bash(curl:*)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(taskkill:*)"
     ],
     "deny": [],
     "ask": []

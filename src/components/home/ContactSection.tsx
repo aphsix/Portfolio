@@ -1,24 +1,53 @@
 import { useState } from 'react'
 import { MdEmail } from 'react-icons/md'
 import { Section } from '../ui'
-import { personalInfo } from '../../data'
 import { useLanguage } from '../../contexts'
 
 const ContactSection = () => {
   const { t } = useLanguage()
-  const [emailContent, setEmailContent] = useState('')
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  })
+  const [isLoading, setIsLoading] = useState(false)
+  const [status, setStatus] = useState('')
 
-  const handleEmailContact = () => {
-    const recipient = personalInfo.email
-    const subject = 'Work Opportunity - Portfolio Contact'
-    const body =
-      emailContent ||
-      'Hello, I am interested in discussing work opportunities with you.'
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }))
+  }
 
-    const mailtoUrl = `mailto:${recipient}?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`
-    window.open(mailtoUrl, '_blank')
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsLoading(true)
+    setStatus('')
+
+    try {
+      const response = await fetch('http://localhost:3001/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const result = await response.json()
+
+      if (result.success) {
+        setStatus('Email sent successfully!')
+        setFormData({ name: '', email: '', message: '' })
+      } else {
+        setStatus('Failed to send email. Please try again.')
+      }
+    } catch (error) {
+      setStatus('Error sending email. Please try again.')
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -30,21 +59,47 @@ const ContactSection = () => {
       <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
         {t('home.contact.description')}
       </p>
-      <div className="space-y-3">
+      <form onSubmit={handleSubmit} className="space-y-3">
+        <input
+          type="text"
+          name="name"
+          value={formData.name}
+          onChange={handleInputChange}
+          placeholder="Your Name"
+          required
+          className="w-full px-3 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-sm text-gray-900 dark:text-gray-100 placeholder-gray-500 focus:outline-none focus:border-teal-500"
+        />
+        <input
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleInputChange}
+          placeholder="Your Email"
+          required
+          className="w-full px-3 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-sm text-gray-900 dark:text-gray-100 placeholder-gray-500 focus:outline-none focus:border-teal-500"
+        />
         <textarea
-          value={emailContent}
-          onChange={(e) => setEmailContent(e.target.value)}
+          name="message"
+          value={formData.message}
+          onChange={handleInputChange}
           placeholder={t('home.contact.placeholder')}
+          required
           className="w-full px-3 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-sm text-gray-900 dark:text-gray-100 placeholder-gray-500 focus:outline-none focus:border-teal-500 resize-none"
           rows={4}
         />
+        {status && (
+          <p className={`text-sm ${status.includes('successfully') ? 'text-green-600' : 'text-red-600'}`}>
+            {status}
+          </p>
+        )}
         <button
-          onClick={handleEmailContact}
-          className="w-full px-4 py-2 bg-teal-500 hover:bg-teal-600 text-white rounded-md text-sm transition-colors"
+          type="submit"
+          disabled={isLoading}
+          className="w-full px-4 py-2 bg-teal-500 hover:bg-teal-600 disabled:bg-gray-400 text-white rounded-md text-sm transition-colors"
         >
-          {t('home.contact.button')}
+          {isLoading ? 'Sending...' : t('home.contact.button')}
         </button>
-      </div>
+      </form>
     </Section>
   )
 }

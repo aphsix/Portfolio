@@ -97,7 +97,7 @@ Message: ${message}
     `;
 
     return await this.sendEmail({
-      to: this.fromEmail,
+      to: 'aphisitdanc.work@gmail.com',
       subject: `Contact Form: Message from ${name}`,
       text,
       html,
