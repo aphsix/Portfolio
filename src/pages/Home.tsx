@@ -268,33 +268,6 @@ const Home = () => {
           </div>
         </motion.section>
 
-        {/* I ♥ Section */}
-        {/* <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.6 }}
-          className="mb-10"
-        >
-          <div className="flex items-center gap-3 mb-4">
-            <MdColorLens className="text-lg" />
-            <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">
-              I ♥
-            </h3>
-          </div>
-          <p className="text-gray-600 dark:text-gray-300 text-sm">
-            Art, Music, Drawing, Playing Guitar, Photography, Machine Learning,
-            and{" "}
-            <a
-              href="https://www.craftz.dog/works/fourpainters"
-              className="text-teal-500 hover:underline"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Turning coffee into code
-            </a>
-            !
-          </p>
-        </motion.section> */}
 
         {/* On the web Section */}
         <motion.section
@@ -441,23 +414,6 @@ const Home = () => {
           </motion.button>
         </motion.section> */}
 
-        {/* Footer */}
-        {/* <footer className="text-center py-6 border-t border-gray-200 dark:border-gray-700 mt-8">
-          <p className="text-gray-500 dark:text-gray-400 text-xs">
-            © 2025 aphsx. All Rights Reserved.
-          </p>
-          <p className="text-gray-400 dark:text-gray-500 text-xs mt-1">
-            Inspired by{" "}
-            <a
-              href="https://www.craftz.dog/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-teal-500 hover:underline"
-            >
-              craftz.dog
-            </a>
-          </p>
-        </footer> */}
       </div>
     </div>
   );

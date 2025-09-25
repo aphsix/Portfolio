@@ -9,6 +9,7 @@ export interface Project {
   descriptionLong?: string
   descriptionLongTh?: string
   image: string
+  images?: string[]
   link?: string
   github?: string
   tags: string[]
