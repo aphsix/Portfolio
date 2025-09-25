@@ -28,6 +28,32 @@ export const projects: Project[] = [
     category: 'collaborations'
   },
   {
+    id: '5',
+    title: createLocalizedText('Tourism Website', 'เว็บไซต์ท่องเที่ยว'),
+    description: createLocalizedText(
+      'A vibrant tourism website promoting local attractions, events, and travel guides, built with Next.js and styled with Tailwind CSS.',
+      'เว็บไซต์ท่องเที่ยวที่มีชีวิตชีวาเพื่อส่งเสริมสถานที่ท่องเที่ยวในท้องถิ่น กิจกรรม และคู่มือการเดินทาง สร้างด้วย Next.js และจัดแต่งด้วย Tailwind CSS'
+    ),
+    shortDescription: createLocalizedText(
+      'Tourism website built with Next.js and Tailwind CSS.',
+      'เว็บไซต์ท่องเที่ยวสร้างด้วย Next.js และ Tailwind CSS.'
+    ),
+    descriptionLong: createLocalizedText(
+      'A tourism website designed to promote local attractions, events, and travel guides. The site features a colorful and engaging design with sections for popular destinations, upcoming events, travel tips, and user reviews. Built using Next.js for server-side rendering and SEO optimization, along with Tailwind CSS for a responsive and visually appealing layout.',
+      'เว็บไซต์ท่องเที่ยวที่ออกแบบมาเพื่อส่งเสริมสถานที่ท่องเที่ยวในท้องถิ่น กิจกรรม และคู่มือการเดินทาง เว็บไซต์มีการออกแบบที่มีสีสันและน่าสนใจ พร้อมส่วนต่างๆ สำหรับจุดหมายปลายทางยอดนิยม กิจกรรมที่จะเกิดขึ้น เคล็ดลับการเดินทาง และบทวิจารณ์ของผู้ใช้ สร้างขึ้นโดยใช้ Next.js สำหรับการเรนเดอร์ฝั่งเซิร์ฟเวอร์และการเพิ่มประสิทธิภาพ SEO รวมถึง Tailwind CSS สำหรับเลย์เอาต์ที่ตอบสนองและน่าดึงดูดทางสายตา'
+    ),
+    image: '/images/project/Tourism.png',
+    images: [],
+    link: '',
+    github: '',
+    tags: createLocalizedText(
+      ['Next.js', 'Tailwind CSS', 'JavaScript', 'Responsive Design', 'Web Development'],
+      ['Next.js', 'Tailwind CSS', 'JavaScript', 'การออกแบบตอบสนอง', 'การพัฒนาเว็บ']
+    ),
+    category: 'collaborations'
+  }
+  ,
+  {
     id: '2',
     title: createLocalizedText('Medical E-Learning Platform', 'แพลตฟอร์มอีเลิร์นนิงทางการแพทย์'),
     description: createLocalizedText(
@@ -42,7 +68,7 @@ export const projects: Project[] = [
       'An e-learning platform for medical radiology education that provides medical students with access to real-world case studies, interactive imaging tools, and assessment modules. The platform includes DICOM image viewer integration, case-based learning modules, progress tracking, and collaboration tools.',
       'สร้างแพลตฟอร์มอีเลิร์นนิงที่นวัตกรรมซึ่งออกแบบเฉพาะสำหรับการศึกษา แพลตฟอร์มนี้ให้นักศึกษาแพทย์เข้าถึงไลบรารีที่ครอบคลุมของกรณีศึกษาในโลกแห่งความเป็นจริง เครื่องมือถ่ายภาพแบบโต้ตอบ และโมดูลการประเมินแบบก้าวหน้า คุณสมบัติรวมถึงการรวม DICOM image viewer โมดูลการเรียนรู้ตามกรณี การติดตามความก้าวหน้า และเครื่องมือความร่วมมือของเพื่อน'
     ),
-    image: '/images/CSI00139.jpg',
+    image: '/images/project/E-Learning.png',
     images: [],
     link: 'https://example.com',
     github: 'https://github.com',
@@ -67,8 +93,8 @@ export const projects: Project[] = [
       'A comprehensive website for the Center of Social Innovation (CoSI) Lab at Bangkok University. The site showcases ongoing research projects, upcoming events, and the center\'s impact on social innovation. Features include project portfolio galleries, event management system, research publication database, team member profiles, and an interactive contact system.',
       'ออกแบบและพัฒนาเว็บไซต์ที่ครอบคลุมสำหรับห้องปฏิบัติการศูนย์นวัตกรรมเฉพาะทาง (CoSI) ที่มหาวิทยาลัยกรุงเทพ เว็บไซต์ทำหน้าที่เป็นศูนย์กลางดิจิทัลสำหรับการแสดงโครงการวิจัยที่กำลังดำเนินอยู่ กิจกรรมที่จะเกิดขึ้น และผลกระทบของศูนย์ต่อนวัตกรรมทางสังคม คุณสมบัติรวมถึงแกลเลอรีพอร์ตโฟลิโอโครงการ ระบบการจัดการกิจกรรม ฐานข้อมูลสิ่งพิมพ์วิจัย โปรไฟล์สมาชิกทีม และระบบติดต่อแบบโต้ตอบ'
     ),
-    image: '/images/CSI00139.jpg',
-    images: ['/images/CSI00139.jpg'],
+    image: '/images/project/CoSI_web.png',
+    images: [],
     link: 'https://cosi.bu.ac.th',
     github: '',
     tags: createLocalizedText(
@@ -95,12 +121,13 @@ export const projects: Project[] = [
     ),
     image: '/images/portfolio.png',
     images: ['/images/portfolio.png'],
-    link: 'https://example.com',
-    github: 'https://github.com',
+    link: 'https://portfolio-aphsx.vercel.app/',
+    github: 'https://github.com/aphsix/Portfolio',
     tags: createLocalizedText(
       ['React', 'Tailwind CSS', 'JavaScript', 'Responsive Design', 'Web Development'],
       ['React', 'Tailwind CSS', 'JavaScript', 'การออกแบบตอบสนอง', 'การพัฒนาเว็บ']
     ),
     category: 'works'
-  }
+  },
+  
 ]
