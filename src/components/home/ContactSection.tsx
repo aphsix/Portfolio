@@ -26,6 +26,18 @@ const ContactSection = () => {
     setIsLoading(true)
     setStatus('')
 
+    // Email sending functionality temporarily disabled
+    // TODO: Re-enable when ready to use real email
+
+    // Simulate form submission
+    setTimeout(() => {
+      setStatus('Contact form submitted! (Email functionality temporarily disabled)')
+      setFormData({ name: '', email: '', message: '' })
+      setIsLoading(false)
+    }, 1000)
+
+    /*
+    // COMMENTED OUT - Email sending code (ready to re-enable)
     try {
       const response = await fetch('http://localhost:3001/api/contact', {
         method: 'POST',
@@ -48,6 +60,7 @@ const ContactSection = () => {
     } finally {
       setIsLoading(false)
     }
+    */
   }
 
   return (

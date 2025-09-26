@@ -1,3 +1,7 @@
+/*
+// EMAIL FUNCTIONALITY - TEMPORARILY DISABLED
+// Uncomment this entire file when ready to enable email sending
+
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
@@ -144,3 +148,5 @@ app.get('/api/health', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+*/

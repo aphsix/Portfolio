@@ -1,3 +1,7 @@
+/*
+// EMAIL SERVICE - TEMPORARILY DISABLED
+// Uncomment this entire file when ready to enable email sending
+
 interface EmailConfig {
   host: string;
   port: number;
@@ -127,3 +131,13 @@ Message: ${message}
 }
 
 export default new EmailService();
+
+*/
+
+// PLACEHOLDER EMAIL SERVICE - NO FUNCTIONALITY
+// This prevents import errors while email functionality is disabled
+export default {
+  sendEmail: () => Promise.resolve(false),
+  sendContactEmail: () => Promise.resolve(false),
+  verifyConnection: () => Promise.resolve(false)
+};
