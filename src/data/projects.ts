@@ -70,8 +70,8 @@ export const projects: Project[] = [
     ),
     image: '/images/project/E-Learning.png',
     images: [],
-    link: 'https://example.com',
-    github: 'https://github.com',
+    link: '',
+    github: '',
     tags: createLocalizedText(
       ['React', 'Node.js','Golang', 'Educational Technology'],
       ['React', 'Node.js','Golang',  'เทคโนโลยีการศึกษา']

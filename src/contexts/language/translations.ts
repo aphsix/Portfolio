@@ -103,7 +103,7 @@ export const translations = {
     'project.back': 'กลับไปยังโปรเจค',
     'project.visit': 'เยี่ยมชมโปรเจค',
     'project.code': 'ดูซอร์สโค้ด',
-    'project.coming_soon': 'เร็วๆ นี้',
+    'project.coming_soon': 'ส่วนตัว',
     'project.private': 'รีโปส่วนตัว',
     'project.technologies': 'เทคโนโลยีที่ใช้',
     'project.about': 'เกี่ยวกับโปรเจคนี้',
