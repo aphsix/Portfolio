@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import ProjectSection from '../components/ProjectSection'
+import { ProjectList } from '../components/projects'
 import { projects } from '../data'
 import { useLanguage } from '../contexts'
 
@@ -31,18 +31,18 @@ const Projects = () => {
         </motion.div>
 
         {/* Works Sections */}
-        <ProjectSection
+        <ProjectList
           title={t('projects.main')}
           projects={workProjects}
         />
 
-        <ProjectSection
+        <ProjectList
           title={t('projects.collaborations')}
           projects={collaborationProjects}
           showDivider={true}
         />
 
-        <ProjectSection
+        <ProjectList
           title={t('projects.old')}
           projects={oldProjects}
           showDivider={true}

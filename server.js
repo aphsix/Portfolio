@@ -37,7 +37,7 @@ if (MOCK_EMAIL) {
   });
 
   // Verify email configuration on startup (only for real email)
-  transporter.verify(function(error, success) {
+  transporter.verify(function(error) {
     if (error) {
       console.log('❌ Email configuration error:', error.message);
       console.log('Please check your EMAIL_USER and EMAIL_PASS in .env file');

@@ -1,11 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { ThemeProvider, LanguageProvider } from './contexts'
-import ErrorBoundary from './components/ErrorBoundary'
-import Navbar from './components/Navbar'
-import Footer from './components/Footer'
+import { ErrorBoundary, Navbar, Footer } from './components/common'
 import Home from './pages/Home'
 import Projects from './pages/Projects'
-import Posts from './pages/Posts'
 import Uses from './pages/Uses'
 import ProjectDetail from './pages/ProjectDetail'
 
@@ -22,7 +19,6 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/projects" element={<Projects />} />
                 <Route path="/projects/:projectId" element={<ProjectDetail />} />
-                <Route path="/posts" element={<Posts />} />
                 <Route path="/uses" element={<Uses />} />
               </Routes>
             </main>

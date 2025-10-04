@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { HiMenu, HiX } from 'react-icons/hi'
 import { FiGithub, FiMoon, FiSun, FiGlobe } from 'react-icons/fi'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useTheme, useLanguage } from '../contexts'
+import { useTheme, useLanguage } from '../../contexts'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)

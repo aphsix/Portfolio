@@ -1,6 +1,6 @@
 import {
   HeroSection,
-  WorkSection,
+  AboutWorkSection,
   BioSection,
   SkillsSection,
   SocialLinksSection,
@@ -17,7 +17,7 @@ const Home = () => {
     >
       <div className="max-w-2xl mx-auto px-6">
         <HeroSection />
-        <WorkSection />
+        <AboutWorkSection />
         <BioSection />
         <SkillsSection />
         <SocialLinksSection />

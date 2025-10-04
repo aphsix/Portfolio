@@ -1,5 +1,5 @@
 export { default as HeroSection } from './HeroSection'
-export { default as WorkSection } from './WorkSection'
+export { default as AboutWorkSection } from './AboutWorkSection'
 export { default as BioSection } from './BioSection'
 export { default as SkillsSection } from './SkillsSection'
 export { default as SocialLinksSection } from './SocialLinksSection'

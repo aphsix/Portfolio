@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { Project } from '../types'
-import { useLocalizedData } from '../hooks'
+import { Project } from '../../types'
+import { useLocalizedData } from '../../hooks'
 
 interface WorkSectionProps {
   title: string

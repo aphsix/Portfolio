@@ -3,6 +3,8 @@ import { MdEmail } from 'react-icons/md'
 import { Section } from '../ui'
 import { useLanguage } from '../../contexts'
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001'
+
 const ContactSection = () => {
   const { t } = useLanguage()
   const [formData, setFormData] = useState({
@@ -27,7 +29,7 @@ const ContactSection = () => {
     setStatus('')
 
     try {
-      const response = await fetch('http://localhost:3001/api/contact', {
+      const response = await fetch(`${API_URL}/api/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -43,7 +45,7 @@ const ContactSection = () => {
       } else {
         setStatus('Failed to send email. Please try again.')
       }
-    } catch (error) {
+    } catch {
       setStatus('Error sending email. Please try again.')
     } finally {
       setIsLoading(false)
