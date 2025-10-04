@@ -1,7 +1,3 @@
-/*
-// EMAIL FUNCTIONALITY - TEMPORARILY DISABLED
-// Uncomment this entire file when ready to enable email sending
-
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
@@ -71,14 +67,6 @@ app.post('/api/contact', async (req, res) => {
     }
 
     // Prepare email content
-    const html = `
-      <h2>New Contact Form Submission</h2>
-      <p><strong>Name:</strong> ${name}</p>
-      <p><strong>Email:</strong> ${email}</p>
-      <p><strong>Message:</strong></p>
-      <p>${message.replace(/\n/g, '<br>')}</p>
-    `;
-
     const text = `
 New Contact Form Submission
 
@@ -89,11 +77,11 @@ Message: ${message}
 
     // Send email
     const mailOptions = {
-      from: MOCK_EMAIL ? 'test@example.com' : process.env.EMAIL_USER,
-      to: 'aphisitdanc.work@gmail.com',
+      from: MOCK_EMAIL ? 'test@example.com' : `"${name}" <${process.env.EMAIL_USER}>`,
+      to: 'aphisityns170960@gmail.com',
+      replyTo: email, // อีเมลผู้ส่งจากฟอร์ม
       subject: `Contact Form: Message from ${name}`,
       text,
-      html,
     };
 
     if (MOCK_EMAIL) {
@@ -105,7 +93,30 @@ Message: ${message}
       console.log('Content:', text);
       console.log('-------------------');
     } else {
+      // ส่งอีเมลหาคุณ
       await transporter.sendMail(mailOptions);
+
+      // Auto-reply email
+      const autoReplyText = `
+ขอบคุณที่ติดต่อเรา
+
+สวัสดีครับคุณ ${name},
+
+เราได้รับข้อความของคุณเรียบร้อยแล้ว และจะตอบกลับโดยเร็วที่สุด
+
+ข้อความที่คุณส่งมา:
+${message}
+
+ขอบคุณครับ,
+Aphisit
+      `;
+
+      await transporter.sendMail({
+        from: process.env.EMAIL_USER,
+        to: email,
+        subject: 'เราได้รับข้อความของคุณแล้ว - Thank you for contacting us',
+        text: autoReplyText,
+      });
     }
 
     const emailSent = true;
@@ -148,5 +159,3 @@ app.get('/api/health', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-
-*/

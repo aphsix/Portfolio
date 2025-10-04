@@ -1,7 +1,3 @@
-/*
-// EMAIL SERVICE - TEMPORARILY DISABLED
-// Uncomment this entire file when ready to enable email sending
-
 interface EmailConfig {
   host: string;
   port: number;
@@ -101,7 +97,7 @@ Message: ${message}
     `;
 
     return await this.sendEmail({
-      to: 'aphisitdanc.work@gmail.com',
+      to: 'aphisityns170960@gmail.com',
       subject: `Contact Form: Message from ${name}`,
       text,
       html,
@@ -131,13 +127,3 @@ Message: ${message}
 }
 
 export default new EmailService();
-
-*/
-
-// PLACEHOLDER EMAIL SERVICE - NO FUNCTIONALITY
-// This prevents import errors while email functionality is disabled
-export default {
-  sendEmail: () => Promise.resolve(false),
-  sendContactEmail: () => Promise.resolve(false),
-  verifyConnection: () => Promise.resolve(false)
-};
