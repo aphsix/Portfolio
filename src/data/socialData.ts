@@ -14,5 +14,11 @@ export const socialLinks: SocialLink[] = [
     icon: FaInstagram,
     url: "https://www.instagram.com/_aphsx/",
     handle: "@_aphsx",
-  }
+  },
+  {
+    name: "Portfolio",
+    icon: FiGithub,
+    url: "https://portfolio.aphsix.com",
+    handle: "https://portfolio-aphsx.vercel.app/",
+  },
 ]
