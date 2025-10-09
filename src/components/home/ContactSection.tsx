@@ -157,7 +157,7 @@ const ContactSection = () => {
               value={formData.name}
               onChange={handleInputChange}
               onBlur={handleBlur}
-              placeholder="John Doe"
+              placeholder="You Name"
               className={`w-full pl-10 pr-3 py-2.5 bg-white dark:bg-gray-800 border rounded-md text-sm text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none transition-colors ${
                 touched.name && errors.name
                   ? 'border-red-500 focus:border-red-500'
@@ -180,7 +180,7 @@ const ContactSection = () => {
               value={formData.email}
               onChange={handleInputChange}
               onBlur={handleBlur}
-              placeholder="lorem"
+              placeholder="your.email@example.com"
               className={`w-full pl-10 pr-3 py-2.5 bg-white dark:bg-gray-800 border rounded-md text-sm text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none transition-colors ${
                 touched.email && errors.email
                   ? 'border-red-500 focus:border-red-500'
